@@ -31,7 +31,7 @@
             <span>小程序</span>
           </template>
           <el-menu-item index="3-1">主页推荐语</el-menu-item>
-          <el-menu-item index="3-2">版权声明</el-menu-item>
+          <el-menu-item index="3-2">免责声明</el-menu-item>
           <el-menu-item index="3-3">详情推荐语</el-menu-item>
           <el-menu-item index="3-4">筛选问题设置</el-menu-item>
         </el-submenu>

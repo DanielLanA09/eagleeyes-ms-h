@@ -69,6 +69,7 @@ export default {
         // eslint-disable-next-line
         this.question.multiple = false;
       }
+      return this.question.multiple;
     }
   },
   methods: {
