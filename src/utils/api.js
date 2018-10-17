@@ -1,9 +1,9 @@
 import axios from "axios"
 import router from '@/router'
 
-// const API_BASE_URL = 'http://192.168.31.252:30080/EagleEyeSM/api';
-const API_BASE_URL = 'http://localhost:8090/api';
-// const API_BASE_URL = 'http://localhost:9000/EagleEyeSM/api';
+const API_BASE_URL = 'http://192.168.31.252:30080/eagleeyes-ms/api'
+// const API_BASE_URL = 'http://localhost:8090/api'
+// const API_BASE_URL = 'http://localhost:9000/eagleeyes-ms/api'
 
 axios.interceptors.request.use(
     config => {

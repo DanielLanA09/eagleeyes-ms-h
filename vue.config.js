@@ -1,3 +1,3 @@
 module.exports = {
-  baseUrl: '/EagleEyeSM/'
+  baseUrl: '/eagleeyes-ms/'
 }
