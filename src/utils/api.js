@@ -1,9 +1,9 @@
 import axios from "axios"
 import router from '@/router'
 
-const API_BASE_URL = 'http://192.168.31.252:30080/eagleeyes-ms/api'
+// const API_BASE_URL = 'http://192.168.31.252:30080/ealgeeyes-ms-3.0/api'
+const API_BASE_URL = 'https://www.eagleshing.com/ealgeeyes-ms-3.0/api'
 // const API_BASE_URL = 'http://localhost:8090/api'
-// const API_BASE_URL = 'http://localhost:9000/eagleeyes-ms/api'
 
 axios.interceptors.request.use(
     config => {
@@ -226,8 +226,8 @@ export default {
             returnError(error, callBack);
         })
     },
-    getOldParams(){
-        axios.get(API_BASE_URL+"/scrapy/fetchcoverforparams")
+    getOldParams() {
+        axios.get(API_BASE_URL + "/scrapy/fetchcoverforparams")
     },
     saveAllCover(cover, callBack) {
         axios.post(API_BASE_URL + "/post/saveall", cover).then(response => {
@@ -237,30 +237,37 @@ export default {
         })
     },
     getPreDevParamsByName(devName, callBack) {
-        axios.get(API_BASE_URL + "/postmanage/getparamlistbyname/"+devName).then(response => {
+        axios.get(API_BASE_URL + "/postmanage/getparamlistbyname/" + devName).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
-    saveQuestion(request,callBack){
-        axios.post(API_BASE_URL+"/postmanage/addquestion",request).then(response=>{
-            returnSuccess(response,callBack)
-        }).catch(error =>{
+    saveQuestion(request, callBack) {
+        axios.post(API_BASE_URL + "/postmanage/addquestion", request).then(response => {
+            returnSuccess(response, callBack)
+        }).catch(error => {
             returnError(error, callBack);
         })
     },
-    deleteQuestion(id,callBack){
-        axios.delete(API_BASE_URL+"/postmanage/deletequestion/"+id).then(response=>{
-            returnSuccess(response,callBack)
-        }).catch(error =>{
+    deleteQuestion(id, callBack) {
+        axios.delete(API_BASE_URL + "/postmanage/deletequestion/" + id).then(response => {
+            returnSuccess(response, callBack)
+        }).catch(error => {
             returnError(error, callBack);
         })
     },
-    getQuestions(callBack){
-        axios.get(API_BASE_URL+"/postmanage/getquestions").then(response=>{
-            returnSuccess(response,callBack)
-        }).catch(error =>{
+    getQuestions(callBack) {
+        axios.get(API_BASE_URL + "/postmanage/getquestions").then(response => {
+            returnSuccess(response, callBack)
+        }).catch(error => {
+            returnError(error, callBack);
+        })
+    },
+    publish(data,callBack){
+        axios.post(API_BASE_URL+"/post/publish",data).then(response=>{
+            returnSuccess(response,callBack);
+        }).catch(error=>{
             returnError(error, callBack);
         })
     }

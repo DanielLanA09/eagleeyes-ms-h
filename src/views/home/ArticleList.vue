@@ -13,10 +13,10 @@
                         <el-button slot="append"  icon="el-icon-search" @click="requestList"></el-button>
                     </el-input>
                 </el-col>
-                <el-button @click="getAllOldList">retrive</el-button>
+                <!-- <el-button @click="getAllOldList">retrive</el-button>
                 <el-button @click="getParams">retriveParams</el-button>
                 <el-button @click="parse">parse</el-button>
-                <el-button @click="save">save</el-button>
+                <el-button @click="save">save</el-button> -->
             </el-row>
         </div>
         <div class="table-box">
@@ -31,9 +31,10 @@
                 <el-table-column label="创建时间" width="180" prop="createdAt"></el-table-column>
                 <el-table-column label="更新时间" width="180" prop="updatedAt"></el-table-column>
                 <el-table-column label="作者" width="80" prop="author"></el-table-column>
-                <el-table-column label="操作" fixed="right" width="120">
+                <el-table-column label="操作" fixed="right" width="160">
                     <template slot-scope="scope">
                         <el-button type="text" size="small">查看</el-button>
+                        <el-button type="text" size="small" @click="publish(scope.row)">发表</el-button>
                         <el-button type="text" size="small" @click="editCover(scope.row)">编辑</el-button>
                         <el-button type="text" size="small" @click="deleteCover(scope.row)">删除</el-button>
                     </template>
@@ -196,6 +197,22 @@ export default {
           this.$message.error("似乎出错了，请呼叫管理人员！");
         }
       });
+    },
+    publish(cover){
+      this.$confirm("此操作将发布这条数据到小程序，是否继续？","警告！",{
+        confirmButtonText: "继续",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(()=>{
+        cover.status = 0;
+        api.publish(cover,res=>{
+          if(res.success){
+            this.$message.success("发布成功！")
+          }else{
+            this.$message.error(res.msg);
+          }
+        })
+      })
     },
     deleteCover(cover) {
       this.$confirm("此操作会永久删除这条数据，是否继续？", "警告！", {

@@ -344,7 +344,7 @@ export default {
     },
     saveCover() {
       this.CoverForm.author = this.$store.state.USER.name;
-      this.CoverForm.status = 0;
+      this.CoverForm.status = 1;
       let request = { cover: this.CoverForm, tags: this.CoverForm.tags };
       // this.CoverForm.img = this.temImgList;
       if (this.CoverForm.id != undefined) {
@@ -402,6 +402,19 @@ export default {
     },
     onContentListAdd(devisionKey, moduleKey) {
       let content = this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content;
+      let list = this.temModuleContent.content.split('|');
+      if(list.length){
+        list.forEach(element => {
+          content.push({
+            type:this.temModuleContent.type,
+            content:element
+          })
+        });
+        this.temModuleContent.content = "";
+        this.saveModuleOnLoseFocus(devisionKey, moduleKey);
+        return;
+      }
+      
       content.push({
         type: this.temModuleContent.type,
         content: this.temModuleContent.content
@@ -452,7 +465,7 @@ export default {
       let devision = this.CoverForm.devisions[devisionIndex];
       api.saveDevision(devision, this.CoverForm.id, res => {
         if (res.success) {
-          // this.$message.success(devision.name+" 自动保存完毕！");
+          this.$message.success(devision.name+" 自动保存完毕！");
           devision = res.data;
         } else {
           this.$message.error(devision.name + " 自动保存失败！因为" + res.msg);

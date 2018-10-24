@@ -60,18 +60,6 @@ export default {
     tags: [],
     temOption: {}
   }),
-  computed: {
-    setMultiple() {
-      if (this.question.max > 0) {
-        // eslint-disable-next-line
-        this.question.multiple = true;
-      } else {
-        // eslint-disable-next-line
-        this.question.multiple = false;
-      }
-      return this.question.multiple;
-    }
-  },
   methods: {
     onAddNew() {
       this.question = {};
@@ -90,6 +78,9 @@ export default {
         })
     },
     addConfirm() {
+      if(this.question.max>1){
+        this.question.multiple = true
+      }
       api.saveQuestion(this.question, res => {
         if (res.success) {
           this.$message.success("添加成功！");
@@ -140,7 +131,8 @@ export default {
   .card {
     float: left;
     width: 500px;
-    margin-left: 15px;
+    margin-top: 15px;
+    margin-right: 15px;
   }
   .card:first-child {
     margin-left: 0;

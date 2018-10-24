@@ -115,6 +115,7 @@ export default {
           return;
         } else {
           this.$message.success("保存成功！");
+          this.Param={};
         }
         this.freshTable(id);
       });
