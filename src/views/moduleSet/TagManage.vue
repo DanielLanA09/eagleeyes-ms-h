@@ -75,7 +75,7 @@ export default {
   }),
   methods: {
     refresh() {
-      api.getTagSetList({ size: 10, page: this.page }, res => {
+      api.getTagSetList({ size: 500, page: this.page }, res => {
         this.tagList = res.data.content;
       });
     },

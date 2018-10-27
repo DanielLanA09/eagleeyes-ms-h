@@ -130,7 +130,9 @@ export default {
   created() {
     this.nestedMapping("/home/articles");
   },
-  mounted() {}
+  mounted() {
+    
+  }
 };
 </script>
 

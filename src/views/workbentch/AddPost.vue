@@ -93,9 +93,9 @@
                     <el-tab-pane :label="devision.name" :name="devision.name" v-for="(devision,devisionKey) in CoverForm.devisions" :key="devisionKey">
                         <el-form label-width="80px">
                             <el-row class="devision">
-                                <el-form-item label="标准">
+                                <!-- <el-form-item label="标准">
                                     <e-uploader v-model="devision.norm" @change="saveDevisionOnLoseFocus(devisionKey)"></e-uploader>
-                                </el-form-item>
+                                </el-form-item> -->
                                 <el-form-item label="描述">
                                     <el-input size="medium" v-model="devision.des" placeholder="请输入文章相关描述" @blur="saveDevisionOnLoseFocus(devisionKey)" autofocus="true"></el-input>
                                 </el-form-item>
