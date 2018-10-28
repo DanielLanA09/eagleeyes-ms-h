@@ -28,6 +28,17 @@
                 </el-row>
                 <el-row>
                   <el-col :span="12">
+                    <el-form-item label="栏目类别">
+                      <el-select size="medium" v-model="devisionSet.type" placeholder="请选择栏目类型" class="width-full">
+                          <el-option :label="'前言'" :value="'PREFACE'"></el-option>
+                          <el-option :label="'外部配套'" :value="'OUTERSET'"></el-option>
+                          <el-option :label="'内部配套'" :value="'INNERSET'"></el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="12">
                     <el-form-item label="模块描述">
                         <el-input v-model="devisionSet.des" type="textarea" placeholder="请简要描述该模块"></el-input>
                     </el-form-item>
@@ -67,6 +78,13 @@
             <el-table :data="moduleTable" border style="width:100%" :default-sort="{prop:'sort',order:'ascending'}">
                 <el-table-column label="排序" prop="sort" width="150"></el-table-column>
                 <el-table-column label="名称" prop="name" width="150"></el-table-column>
+                <el-table-column label="类别" prop="type" width="150">
+                  <template slot-scope="scope">
+                    <span v-if="scope.row.type==0">前言</span>
+                    <span v-if="scope.row.type==1">外部配套</span>
+                    <span v-if="scope.row.type==2">内部配套</span>
+                  </template>
+                </el-table-column>
                 <el-table-column label="描述" prop="des" w></el-table-column>
                 <el-table-column label="页脚" prop="footerDes" w></el-table-column>
                 <el-table-column label="操作" fixed="right" prop="id" width="100">

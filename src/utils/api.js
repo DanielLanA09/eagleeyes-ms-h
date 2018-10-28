@@ -2,8 +2,8 @@ import axios from "axios"
 import router from '@/router'
 
 // const API_BASE_URL = 'http://192.168.31.252:30080/ealgeeyes-ms-3.0/api'
-const API_BASE_URL = 'https://www.eagleshing.com/ealgeeyes-ms-3.0/api'
-// const API_BASE_URL = 'http://localhost:8090/api'
+// const API_BASE_URL = 'https://www.eagleshing.com/ealgeeyes-ms-3.0/api'
+const API_BASE_URL = 'http://localhost:8090/api'
 
 axios.interceptors.request.use(
     config => {

@@ -46,7 +46,7 @@
                         </el-row>
                         <el-row>
                             <el-col :span="24" :offset="0" >
-                                <el-table :data="ParamList" stripe border :default-sort="{prop:'sort',order:'ascending'}">
+                                <el-table :data="ParamList" stripe border :default-sort="{prop:'type',order:'ascending'}">
                                     <el-table-column prop="name" label="名字" width="180"></el-table-column>
                                     <el-table-column prop="type" label="类型" width="180"></el-table-column>
                                     <el-table-column prop="sort" label="次序" width="80"></el-table-column>
@@ -89,7 +89,7 @@ export default {
       sort: 0,
       must: false
     },
-    ParamList: []
+    ParamList: [],
   }),
   methods: {
     tabChange(tag) {

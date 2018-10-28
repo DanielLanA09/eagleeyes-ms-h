@@ -93,29 +93,21 @@
                     <el-tab-pane :label="devision.name" :name="devision.name" v-for="(devision,devisionKey) in CoverForm.devisions" :key="devisionKey">
                         <el-form label-width="80px">
                             <el-row class="devision">
-                                <!-- <el-form-item label="标准">
-                                    <e-uploader v-model="devision.norm" @change="saveDevisionOnLoseFocus(devisionKey)"></e-uploader>
-                                </el-form-item> -->
-                                <el-form-item label="描述">
-                                    <el-input size="medium" v-model="devision.des" placeholder="请输入文章相关描述" @blur="saveDevisionOnLoseFocus(devisionKey)" autofocus="true"></el-input>
-                                </el-form-item>
-                                <el-form-item label="排序" v-model="devision.sort">
-                                    <el-col :span="7">
-                                        <el-input size="medium" v-model="devision.sort" type="number" placeholder="请输入排序" @blur="saveDevisionOnLoseFocus(devisionKey)"></el-input>
-                                    </el-col>
-                                    <el-col :span="7" :offset="1">
+                        
+                                <el-form-item label="分数" v-model="devision.sort">
+                                    <!-- <el-col :span="7" :offset="1">
                                         <el-select size="medium" v-model="devision.type" placeholder="请选择栏目类型" class="width-full" @blur="saveDevisionOnLoseFocus(devisionKey)">
                                             <el-option :label="'前言'" :value="'PREFACE'"></el-option>
                                             <el-option :label="'外部配套'" :value="'OUTERSET'"></el-option>
                                             <el-option :label="'内部配套'" :value="'INNERSET'"></el-option>
                                         </el-select>
-                                    </el-col>
-                                    <el-col :span="8" :offset="1">
+                                    </el-col> -->
+                                    <el-col :span="8">
                                         <el-input size="medium" v-model="devision.mark" type="number" placeholder="请输入分数" @blur="saveDevisionOnLoseFocus(devisionKey)"></el-input>
                                     </el-col>
                                 </el-form-item>
                                 <el-form-item label="参数">
-                                    <el-table size="mini" :data="devision.paramsList" border :default-sort="{prop:'sort',order:'ascending'}" style="width:100%;">
+                                    <el-table size="mini" :data="devision.paramsList" border :default-sort="{prop:'type',order:'ascending'}" style="width:100%;">
                                         <el-table-column prop="sort" label="序号" width="80"></el-table-column>
                                         <el-table-column prop="name" label="名字" width="120"></el-table-column>
                                         <el-table-column prop="type" label="类型" width="120"></el-table-column>
