@@ -20,7 +20,7 @@
             </el-row>
         </div>
         <div class="table-box">
-            <el-table :data="articleList.content" border stripe >
+            <el-table :data="articleList.content" border stripe :default-sort="{prop:'updatedAt',order:'descending'}">
                 <el-table-column label="序号" width="60" prop="id"></el-table-column>
                 <el-table-column label="标题" width="120" prop="title"></el-table-column>
                 <el-table-column label="区域" width="80" prop="district"></el-table-column>

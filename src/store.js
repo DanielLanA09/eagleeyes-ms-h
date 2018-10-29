@@ -12,9 +12,7 @@ export default new Vuex.Store({
       email:"",
       role:""
     },
-    COVER:{
-      
-    },
+    COVER:null,
     CURRENT_NAV:"0"
   },
   mutations: {

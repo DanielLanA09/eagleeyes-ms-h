@@ -89,7 +89,7 @@
         </el-row>
         <el-row v-show="CoverStarted" type="flex" justify="left">
             <el-col :span="20">
-                <el-tabs v-model="activeDevisionName" @tab-click="moduleChange" :tab-position="'left'">
+                <el-tabs v-model="activeDevisionName" :tab-position="'left'">
                     <el-tab-pane :label="devision.name" :name="devision.name" v-for="(devision,devisionKey) in CoverForm.devisions" :key="devisionKey">
                         <el-form label-width="80px">
                             <el-row class="devision">
@@ -124,7 +124,7 @@
                                             </template>
                                         </el-table-column>
                                     </el-table>
-                                    <el-button type="warning" size="mini"  @click="resetDevParams(devision)">重设此栏目参数</el-button>
+                                    <!-- <el-button type="warning" size="mini"  @click="resetDevParams(devision)">重设此栏目参数</el-button> -->
                                 </el-form-item>
                             </el-row>
                             <el-row v-for="(_module,moduleKey) in devision.moduleList" :key="moduleKey" class="sub-devision">
@@ -226,7 +226,7 @@ export default {
       tags: [],
       devisions: [
         {
-          paramsList:[],
+          paramsList: [],
           moduleList: [
             {
               content: []
@@ -276,7 +276,7 @@ export default {
     availTags: [
       { label: "请先选择类型，在选择标签", value: "Null", disabled: true }
     ],
-    priceAvail:[]
+    priceAvail: []
   }),
   computed: {
     setRequestHeader() {
@@ -287,15 +287,15 @@ export default {
     }
   },
   methods: {
-    resetDevParams(dev){
-      api.getPreDevParamsByName(dev.name,res=>{
-        if(res.success){
-          res.data.map(i=>{
+    resetDevParams(dev,paramId) {
+      api.getPreDevParamsByName(dev.name,paramId,dev.id, res => {
+        if (res.success) {
+          res.data.map(i => {
             delete i.id;
-          })
+          });
           dev.paramsList = res.data;
         }
-      })
+      });
     },
     handleImgUrl(url, fileList) {
       url = "";
@@ -308,10 +308,15 @@ export default {
     onBackCover() {
       this.CoverStarted = false;
     },
-    moduleChange(tab) {
-      // eslint-disable-next-line
-      console.log(tab);
-    },
+    // moduleChange(tab) {
+    //   // eslint-disable-next-line
+    //   let index = tab.index;
+    //   api.getDevision(this.CoverForm.id,this.CoverForm.devisions[index].name,devRes=>{
+    //     if(devRes.success){
+    //       this.CoverForm.devisions[index] = devRes.data;
+    //     }
+    //   })
+    // },
     onTagAdd() {
       for (let tag of this.temTag.name) {
         this.CoverForm.tags.push({
@@ -343,7 +348,10 @@ export default {
         api.saveCover(request, false, res => {
           if (res.success) {
             this.CoverStarted = true;
-            this.$message.success("旧数据准备完毕，准备修改");
+            this.$notify.success({
+              title: "提示",
+              message: "旧数据准备完毕！"
+            });
           } else {
             this.$message.error(res.msg);
           }
@@ -354,7 +362,10 @@ export default {
         if (response.success) {
           this.CoverForm = response.data;
           this.activeDevisionName = response.data.devisions[0].name;
-          this.$message.success("数据准备完成，请继续编辑吧！");
+          this.$notify.success({
+            title: "提示",
+            message: "开始编辑！"
+          });
           this.CoverStarted = true;
         } else {
           delete this.CoverForm.id;
@@ -378,7 +389,11 @@ export default {
         if (res.success) {
           res.data.content = "";
           this.CoverForm.devisions[key].moduleList.push(res.data);
-          this.$message.success("子栏目准备就绪，开始编辑！");
+
+          this.$notify.success({
+            title: "提示",
+            message: "子栏目准备就绪，开始编辑！"
+          });
         } else {
           this.$message.error("准备子模块时出现问题，因为：" + res.msg);
         }
@@ -393,20 +408,21 @@ export default {
       });
     },
     onContentListAdd(devisionKey, moduleKey) {
-      let content = this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content;
-      let list = this.temModuleContent.content.split('|');
-      if(list.length){
+      let content = this.CoverForm.devisions[devisionKey].moduleList[moduleKey]
+        .content;
+      let list = this.temModuleContent.content.split("|");
+      if (list.length) {
         list.forEach(element => {
           content.push({
-            type:this.temModuleContent.type,
-            content:element
-          })
+            type: this.temModuleContent.type,
+            content: element
+          });
         });
         this.temModuleContent.content = "";
         this.saveModuleOnLoseFocus(devisionKey, moduleKey);
         return;
       }
-      
+
       content.push({
         type: this.temModuleContent.type,
         content: this.temModuleContent.content
@@ -414,40 +430,49 @@ export default {
       this.temModuleContent.content = "";
       this.saveModuleOnLoseFocus(devisionKey, moduleKey);
     },
-    onImgContentListAdd(devisionKey,moduleKey){
-      let content = this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content;
+    onImgContentListAdd(devisionKey, moduleKey) {
+      let content = this.CoverForm.devisions[devisionKey].moduleList[moduleKey]
+        .content;
       content.push({
-        img:"",
-        imgNames:"",
-        content:""
-      })
+        img: "",
+        imgNames: "",
+        content: ""
+      });
     },
     onContentListRemove(devisionKey, moduleKey, listKey) {
-      let content = this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content;
+      let content = this.CoverForm.devisions[devisionKey].moduleList[moduleKey]
+        .content;
       content.splice(listKey, 1);
       this.saveModuleOnLoseFocus(devisionKey, moduleKey);
     },
-    onImgContentListRemove(devisionKey, moduleKey, listKey){
-      this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content.splice(listKey,1);    
-      this.saveModuleOnLoseFocus(devisionKey, moduleKey);  
+    onImgContentListRemove(devisionKey, moduleKey, listKey) {
+      this.CoverForm.devisions[devisionKey].moduleList[
+        moduleKey
+      ].content.splice(listKey, 1);
+      this.saveModuleOnLoseFocus(devisionKey, moduleKey);
     },
     onBranchChange(devisionKey, moduleKey, event) {
       if (event == "TITLE_CONTENT") {
-        this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content = "";
+        this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content =
+          "";
       } else if (event == "TITLE_IMGS_CONTENT") {
         this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content = [
           {
-            img:"",
-            imgNames:"",
-            content:""
+            img: "",
+            imgNames: "",
+            content: ""
           }
         ];
       } else if (event == "TITLE_LIST") {
-        this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content = [];
+        this.CoverForm.devisions[devisionKey].moduleList[
+          moduleKey
+        ].content = [];
       } else if (event == "TITLE_KEY_VALUE") {
         api.getParamListByName(this.activeDevisionName, response => {
           response.data.object.map(i => delete i.id);
-          this.CoverForm.devisions[devisionKey].moduleList[moduleKey].content = {
+          this.CoverForm.devisions[devisionKey].moduleList[
+            moduleKey
+          ].content = {
             ParamList: response.data.object
           };
         });
@@ -457,8 +482,10 @@ export default {
       let devision = this.CoverForm.devisions[devisionIndex];
       api.saveDevision(devision, this.CoverForm.id, res => {
         if (res.success) {
-          this.$message.success(devision.name+" 自动保存完毕！");
-          devision = res.data;
+          this.$notify.success({
+            title: "提示",
+            message: devision.name + "自动保存完毕！"
+          });
         } else {
           this.$message.error(devision.name + " 自动保存失败！因为" + res.msg);
         }
@@ -473,7 +500,12 @@ export default {
       let devision = this.CoverForm.devisions[devisionIndex];
       api.saveModule(module, devision.id, res => {
         if (!res.success) {
-          this.$message.error(module.name + " 自动保存失败！因为" + res.msg);
+          this.$message.error(module.name + "：自动保存失败！因为" + res.msg);
+        }else{
+          this.$notify.success({
+            title: "提示",
+            message: module.name + ":自动保存完毕！"
+          });
         }
       });
     },
@@ -481,35 +513,47 @@ export default {
       let devision = this.CoverForm.devisions[devisionIndex];
       api.saveParams(
         { devisionId: devision.id, params: devision.paramsList },
-        () => {}
+        res => {
+          if (res.success) {
+            this.$notify.success({
+              title: "提示",
+              message: devision.name + "参数保存完毕！"
+            });
+          } else {
+            this.$message.error(module.name + " 自动保存失败！因为" + res.msg);
+          }
+        }
       );
     },
     saveCoverOnLoseFocus() {
-      this.getBuildingPrice(this.CoverForm.project)
+      this.getBuildingPrice(this.CoverForm.project);
       if (this.CoverForm.id) {
         api.saveCover(this.CoverForm, res => {
           if (res.success) {
-            this.$message.success("修改已保存！");
+            this.$notify.success({
+              title: "提示",
+              message: "保存完毕！"
+            });
           } else {
             this.$message.error(res.msg);
           }
         });
       }
     },
-    setBuildingId(id){
-      let price = this.priceAvail.find(item=>item.buildingBaseId==id);
-      this.CoverForm.price = price.price;    
+    setBuildingId(id) {
+      let price = this.priceAvail.find(item => item.buildingBaseId == id);
+      this.CoverForm.price = price.price;
     },
-    getBuildingPrice(project){
-      api.getBuildingPrice(project,res=>{
-        if(res.success){
+    getBuildingPrice(project) {
+      api.getBuildingPrice(project, res => {
+        if (res.success) {
           this.priceAvail = res.data;
-        }else{
-          this.$message.warning("未找到"+project+"相关的价格，默认为空")
+        } else {
+          this.$message.warning("未找到" + project + "相关的价格，默认为空");
         }
-      })
+      });
     },
-    
+
     reset() {
       this.BASE_URL = api.BASE_URL;
       let user = JSON.parse(localStorage.getItem("USER"));
@@ -534,7 +578,7 @@ export default {
   },
   mounted() {
     this.reset();
-    if (this.$store.state.COVER.id != undefined) {
+    if (this.$store.state.COVER!= null) {
       this.CoverForm = this.$store.state.COVER;
       this.activeDevisionName = this.CoverForm.devisions[0].name;
     }

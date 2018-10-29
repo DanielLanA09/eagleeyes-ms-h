@@ -72,6 +72,7 @@ export default {
             localStorage.setItem("USER", JSON.stringify(response.data))
         })
     },
+    
     saveModuleSet(module, callBack) {
         axios.post(API_BASE_URL + "/postmanage/savedevisionset", module).then(response => {
             callBack({ success: true, data: response.data.object })
@@ -236,13 +237,6 @@ export default {
             returnError(error, callBack);
         })
     },
-    getPreDevParamsByName(devName, callBack) {
-        axios.get(API_BASE_URL + "/postmanage/getparamlistbyname/" + devName).then(response => {
-            returnSuccess(response, callBack);
-        }).catch(error => {
-            returnError(error, callBack);
-        })
-    },
     saveQuestion(request, callBack) {
         axios.post(API_BASE_URL + "/postmanage/addquestion", request).then(response => {
             returnSuccess(response, callBack)
@@ -264,12 +258,19 @@ export default {
             returnError(error, callBack);
         })
     },
-    publish(data,callBack){
-        axios.post(API_BASE_URL+"/post/publish",data).then(response=>{
-            returnSuccess(response,callBack);
-        }).catch(error=>{
+    publish(data, callBack) {
+        axios.post(API_BASE_URL + "/post/publish", data).then(response => {
+            returnSuccess(response, callBack);
+        }).catch(error => {
             returnError(error, callBack);
         })
-    }
+    },
+    getDevision(coverId, devName, callBack) {
+        axios.get(API_BASE_URL + "/post/getdevisionbyname/" + coverId + "/" + devName).then(response => {
+            returnSuccess(response, callBack);
+        }).catch(error => {
+            returnError(error, callBack);
+        })
+    },
 }
 
