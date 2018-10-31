@@ -1,0 +1,1316 @@
+[
+    {
+        "id": 4,
+        "name": "建成时间",
+        "type": "",
+        "must": true,
+        "sort": 0,
+        "des": null,
+        "devisionSetId": 3
+    },
+    {
+        "id": 5,
+        "name": "建筑面积",
+        "type": null,
+        "must": true,
+        "sort": 0,
+        "des": null,
+        "devisionSetId": 3
+    },
+    {
+        "id": 6,
+        "name": "容积率",
+        "type": null,
+        "must": true,
+        "sort": 0,
+        "des": null,
+        "devisionSetId": 3
+    },
+    {
+        "id": 7,
+        "name": "绿化覆盖率",
+        "type": null,
+        "must": true,
+        "sort": 0,
+        "des": null,
+        "devisionSetId": 3
+    },
+    {
+        "id": 8,
+        "name": "建筑类型",
+        "type": null,
+        "must": true,
+        "sort": 0,
+        "des": null,
+        "devisionSetId": 3
+    },
+    {
+        "id": 9,
+        "name": "采集时间",
+        "type": null,
+        "must": true,
+        "sort": 0,
+        "des": null,
+        "devisionSetId": 3
+    },
+    {
+        "id": 10,
+        "name": "开发商名",
+        "type": null,
+        "must": true,
+        "sort": 0,
+        "des": null,
+        "devisionSetId": 3
+    },
+    {
+        "id": 11,
+        "name": "小区地址",
+        "type": null,
+        "must": true,
+        "sort": 0,
+        "des": null,
+        "devisionSetId": 3
+    },
+    {
+        "id": 12,
+        "name": "楼房外观",
+        "type": "多层",
+        "must": true,
+        "sort": 1,
+        "des": " 老旧\\较老化\\一般\\较新",
+        "devisionSetId": 4
+    },
+    {
+        "id": 13,
+        "name": "楼内老化情况",
+        "type": "多层",
+        "must": true,
+        "sort": 2,
+        "des": " 老旧\\较老化\\一般\\较新",
+        "devisionSetId": 4
+    },
+    {
+        "id": 14,
+        "name": "楼层数",
+        "type": "多层",
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 15,
+        "name": "有无电梯",
+        "type": "多层",
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 16,
+        "name": "楼型朝向",
+        "type": "多层",
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 17,
+        "name": "采光",
+        "type": "多层",
+        "must": true,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 18,
+        "name": "层高",
+        "type": "多层",
+        "must": true,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 19,
+        "name": "门对门情况",
+        "type": "多层",
+        "must": false,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 20,
+        "name": "楼房外观",
+        "type": "高层",
+        "must": true,
+        "sort": 1,
+        "des": " 老旧\\较老化\\一般\\较新",
+        "devisionSetId": 4
+    },
+    {
+        "id": 21,
+        "name": "楼层数",
+        "type": "高层",
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 22,
+        "name": "几梯几户",
+        "type": "高层",
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 23,
+        "name": "楼型朝向",
+        "type": "高层",
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 24,
+        "name": "采光",
+        "type": "高层",
+        "must": true,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 25,
+        "name": "入户大厅",
+        "type": "高层",
+        "must": true,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 26,
+        "name": "层高",
+        "type": "高层",
+        "must": true,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 27,
+        "name": "过道采光通风情况",
+        "type": "高层",
+        "must": true,
+        "sort": 9,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 28,
+        "name": "过道间距",
+        "type": "高层",
+        "must": false,
+        "sort": 10,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 29,
+        "name": "楼房外观",
+        "type": "小高层",
+        "must": true,
+        "sort": 1,
+        "des": " 老旧\\较老化\\一般\\较新",
+        "devisionSetId": 4
+    },
+    {
+        "id": 30,
+        "name": "楼内老化情况",
+        "type": "小高层",
+        "must": true,
+        "sort": 2,
+        "des": " 老旧\\较老化\\一般\\较新",
+        "devisionSetId": 4
+    },
+    {
+        "id": 31,
+        "name": "楼内老化情况",
+        "type": "高层",
+        "must": true,
+        "sort": 2,
+        "des": " 老旧\\较老化\\一般\\较新",
+        "devisionSetId": 4
+    },
+    {
+        "id": 32,
+        "name": "楼层数",
+        "type": "小高层",
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 33,
+        "name": "几梯几户",
+        "type": "小高层",
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 34,
+        "name": " 楼形朝向\t\t",
+        "type": "小高层",
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 35,
+        "name": "门对门情况",
+        "type": "小高层\t",
+        "must": false,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 36,
+        "name": "采光",
+        "type": "小高层",
+        "must": true,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 37,
+        "name": "入户大厅",
+        "type": "小高层",
+        "must": true,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 38,
+        "name": "层高",
+        "type": "小高层",
+        "must": true,
+        "sort": 9,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 39,
+        "name": "入户花园",
+        "type": "多层",
+        "must": false,
+        "sort": 9,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 40,
+        "name": "过道间距",
+        "type": "小高层",
+        "must": false,
+        "sort": 10,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 41,
+        "name": "楼房外观",
+        "type": "别墅",
+        "must": true,
+        "sort": 1,
+        "des": "老旧\\较老化\\一般\\较新",
+        "devisionSetId": 4
+    },
+    {
+        "id": 42,
+        "name": "楼房朝向",
+        "type": "别墅",
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 43,
+        "name": "采光",
+        "type": "别墅",
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 44,
+        "name": "入户花园",
+        "type": "别墅",
+        "must": false,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 45,
+        "name": "楼房外观",
+        "type": "公寓",
+        "must": true,
+        "sort": 1,
+        "des": "老旧\\较老化\\一般\\较新",
+        "devisionSetId": 4
+    },
+    {
+        "id": 46,
+        "name": "楼内老化情况",
+        "type": "公寓",
+        "must": true,
+        "sort": 2,
+        "des": "老旧\\较老化\\一般\\较新",
+        "devisionSetId": 4
+    },
+    {
+        "id": 47,
+        "name": "楼层数",
+        "type": "公寓",
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 48,
+        "name": "楼型朝向",
+        "type": "公寓",
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 49,
+        "name": "采光",
+        "type": "公寓",
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 50,
+        "name": "入户大厅",
+        "type": "公寓",
+        "must": false,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 51,
+        "name": "层高",
+        "type": "公寓",
+        "must": true,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 52,
+        "name": "过道采光通风情况",
+        "type": "公寓",
+        "must": true,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 53,
+        "name": "过道间距",
+        "type": "公寓",
+        "must": false,
+        "sort": 9,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 54,
+        "name": "几梯几户",
+        "type": "公寓",
+        "must": true,
+        "sort": 10,
+        "des": null,
+        "devisionSetId": 4
+    },
+    {
+        "id": 66,
+        "name": "座椅",
+        "type": "",
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 13
+    },
+    {
+        "id": 67,
+        "name": "凉亭",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 13
+    },
+    {
+        "id": 68,
+        "name": "健身器材",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 13
+    },
+    {
+        "id": 69,
+        "name": "特殊设施",
+        "type": null,
+        "must": false,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 13
+    },
+    {
+        "id": 70,
+        "name": "儿童乐园",
+        "type": null,
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 13
+    },
+    {
+        "id": 71,
+        "name": "运动场所",
+        "type": null,
+        "must": true,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 13
+    },
+    {
+        "id": 72,
+        "name": "监控分布",
+        "type": null,
+        "must": true,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 13
+    },
+    {
+        "id": 73,
+        "name": "进出口分布",
+        "type": null,
+        "must": false,
+        "sort": 8,
+        "des": "合理\\不合理",
+        "devisionSetId": 13
+    },
+    {
+        "id": 74,
+        "name": "路灯照明",
+        "type": null,
+        "must": true,
+        "sort": 9,
+        "des": "明亮/正常/昏暗\t",
+        "devisionSetId": 13
+    },
+    {
+        "id": 75,
+        "name": "内部门面",
+        "type": "",
+        "must": false,
+        "sort": 10,
+        "des": null,
+        "devisionSetId": 13
+    },
+    {
+        "id": 76,
+        "name": "进出口数量",
+        "type": null,
+        "must": true,
+        "sort": 11,
+        "des": null,
+        "devisionSetId": 13
+    },
+    {
+        "id": 77,
+        "name": "绿化率",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 78,
+        "name": "水体景观",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 79,
+        "name": "植被种类",
+        "type": "",
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 80,
+        "name": "绿化修剪",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 81,
+        "name": "改造绿化带",
+        "type": null,
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 82,
+        "name": "路面保洁",
+        "type": null,
+        "must": true,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 83,
+        "name": "堆放物品",
+        "type": null,
+        "must": false,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 84,
+        "name": "晾晒衣物",
+        "type": null,
+        "must": false,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 85,
+        "name": "路面平整",
+        "type": null,
+        "must": false,
+        "sort": 9,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 86,
+        "name": "垃圾桶数量",
+        "type": null,
+        "must": true,
+        "sort": 10,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 87,
+        "name": "楼内保洁",
+        "type": null,
+        "must": true,
+        "sort": 11,
+        "des": null,
+        "devisionSetId": 7
+    },
+    {
+        "id": 88,
+        "name": "道路宽窄",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 5
+    },
+    {
+        "id": 89,
+        "name": "占道",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 5
+    },
+    {
+        "id": 90,
+        "name": "绿化景观",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 5
+    },
+    {
+        "id": 91,
+        "name": "公园",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 5
+    },
+    {
+        "id": 92,
+        "name": "街道污染",
+        "type": null,
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 5
+    },
+    {
+        "id": 93,
+        "name": "路面平整",
+        "type": null,
+        "must": true,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 5
+    },
+    {
+        "id": 94,
+        "name": "河流",
+        "type": null,
+        "must": false,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 5
+    },
+    {
+        "id": 95,
+        "name": "山体",
+        "type": null,
+        "must": false,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 5
+    },
+    {
+        "id": 96,
+        "name": "临近主干道",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 8
+    },
+    {
+        "id": 97,
+        "name": "临近次干道",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 8
+    },
+    {
+        "id": 98,
+        "name": "公交线路",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 8
+    },
+    {
+        "id": 99,
+        "name": "地铁站",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 8
+    },
+    {
+        "id": 100,
+        "name": "小区外乱停车",
+        "type": null,
+        "must": false,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 8
+    },
+    {
+        "id": 101,
+        "name": "周边路况",
+        "type": null,
+        "must": true,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 8
+    },
+    {
+        "id": 102,
+        "name": "到高铁站",
+        "type": null,
+        "must": false,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 8
+    },
+    {
+        "id": 103,
+        "name": "到客运站",
+        "type": null,
+        "must": false,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 8
+    },
+    {
+        "id": 104,
+        "name": "龙洞堡机场",
+        "type": null,
+        "must": false,
+        "sort": 9,
+        "des": null,
+        "devisionSetId": 8
+    },
+    {
+        "id": 105,
+        "name": "人车分流",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 9
+    },
+    {
+        "id": 106,
+        "name": "车位",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 9
+    },
+    {
+        "id": 107,
+        "name": "车位月租",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": "例：100元 （不用写每月了）",
+        "devisionSetId": 9
+    },
+    {
+        "id": 108,
+        "name": "汽车充电处",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 9
+    },
+    {
+        "id": 109,
+        "name": "非机动车停放处",
+        "type": "",
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 9
+    },
+    {
+        "id": 110,
+        "name": "小区内乱停车",
+        "type": null,
+        "must": true,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 9
+    },
+    {
+        "id": 111,
+        "name": "可否临时停车",
+        "type": null,
+        "must": false,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 9
+    },
+    {
+        "id": 112,
+        "name": "小型门店",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 10
+    },
+    {
+        "id": 113,
+        "name": "中型生鲜",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 10
+    },
+    {
+        "id": 114,
+        "name": "大型超市",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 10
+    },
+    {
+        "id": 115,
+        "name": "农贸市场",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 10
+    },
+    {
+        "id": 116,
+        "name": "私立幼儿园",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 11
+    },
+    {
+        "id": 117,
+        "name": "公立幼儿园",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 11
+    },
+    {
+        "id": 118,
+        "name": "私立小学",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 11
+    },
+    {
+        "id": 119,
+        "name": "公立小学",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 11
+    },
+    {
+        "id": 120,
+        "name": "私立初中",
+        "type": null,
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 11
+    },
+    {
+        "id": 121,
+        "name": "公立高中",
+        "type": null,
+        "must": true,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 11
+    },
+    {
+        "id": 122,
+        "name": "高中",
+        "type": null,
+        "must": false,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 11
+    },
+    {
+        "id": 123,
+        "name": "培训机构",
+        "type": null,
+        "must": false,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 11
+    },
+    {
+        "id": 124,
+        "name": "餐饮店铺",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 12
+    },
+    {
+        "id": 125,
+        "name": "商业步行街",
+        "type": null,
+        "must": false,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 12
+    },
+    {
+        "id": 126,
+        "name": "购物中心",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 12
+    },
+    {
+        "id": 127,
+        "name": "娱乐种类",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 12
+    },
+    {
+        "id": 128,
+        "name": "出行服务",
+        "type": null,
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 12
+    },
+    {
+        "id": 129,
+        "name": "生活服务",
+        "type": null,
+        "must": true,
+        "sort": 6,
+        "des": "齐全/一般/较少\t",
+        "devisionSetId": 12
+    },
+    {
+        "id": 130,
+        "name": "图书类",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 14
+    },
+    {
+        "id": 131,
+        "name": "健身房",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 14
+    },
+    {
+        "id": 132,
+        "name": "体育场所",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 14
+    },
+    {
+        "id": 133,
+        "name": "可活动广场",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 14
+    },
+    {
+        "id": 134,
+        "name": "博物类",
+        "type": null,
+        "must": false,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 14
+    },
+    {
+        "id": 135,
+        "name": "科技类",
+        "type": null,
+        "must": false,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 14
+    },
+    {
+        "id": 136,
+        "name": "展览类",
+        "type": null,
+        "must": false,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 14
+    },
+    {
+        "id": 137,
+        "name": "戏剧场馆",
+        "type": null,
+        "must": false,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 14
+    },
+    {
+        "id": 138,
+        "name": "大型医院",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 16
+    },
+    {
+        "id": 139,
+        "name": "药店",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 16
+    },
+    {
+        "id": 140,
+        "name": "诊所、小医院",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 16
+    },
+    {
+        "id": 141,
+        "name": "社区服务中心",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 16
+    },
+    {
+        "id": 142,
+        "name": "针灸、正骨",
+        "type": null,
+        "must": false,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 16
+    },
+    {
+        "id": 143,
+        "name": "宠物医院",
+        "type": null,
+        "must": false,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 16
+    },
+    {
+        "id": 144,
+        "name": "噪音污染",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 17
+    },
+    {
+        "id": 145,
+        "name": "光线污染",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 17
+    },
+    {
+        "id": 146,
+        "name": "气体污染",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 17
+    },
+    {
+        "id": 147,
+        "name": "开户银行",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 18
+    },
+    {
+        "id": 148,
+        "name": "酒店",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 18
+    },
+    {
+        "id": 149,
+        "name": "印刷店",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 18
+    },
+    {
+        "id": 150,
+        "name": "写字楼",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 18
+    },
+    {
+        "id": 151,
+        "name": "文具店",
+        "type": null,
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 18
+    },
+    {
+        "id": 152,
+        "name": "居委会",
+        "type": null,
+        "must": true,
+        "sort": 1,
+        "des": null,
+        "devisionSetId": 19
+    },
+    {
+        "id": 153,
+        "name": "警务室",
+        "type": null,
+        "must": true,
+        "sort": 2,
+        "des": null,
+        "devisionSetId": 19
+    },
+    {
+        "id": 154,
+        "name": "派出所",
+        "type": null,
+        "must": true,
+        "sort": 3,
+        "des": null,
+        "devisionSetId": 19
+    },
+    {
+        "id": 155,
+        "name": "社区服务中心",
+        "type": null,
+        "must": true,
+        "sort": 4,
+        "des": null,
+        "devisionSetId": 19
+    },
+    {
+        "id": 156,
+        "name": "消防机关",
+        "type": null,
+        "must": true,
+        "sort": 5,
+        "des": null,
+        "devisionSetId": 19
+    },
+    {
+        "id": 157,
+        "name": "政务大厅",
+        "type": null,
+        "must": true,
+        "sort": 6,
+        "des": null,
+        "devisionSetId": 19
+    },
+    {
+        "id": 158,
+        "name": "交警大队",
+        "type": null,
+        "must": false,
+        "sort": 7,
+        "des": null,
+        "devisionSetId": 19
+    },
+    {
+        "id": 159,
+        "name": "出入境大厅",
+        "type": null,
+        "must": false,
+        "sort": 8,
+        "des": null,
+        "devisionSetId": 19
+    },
+    {
+        "id": 160,
+        "name": "其他机构",
+        "type": null,
+        "must": false,
+        "sort": 9,
+        "des": null,
+        "devisionSetId": 19
+    }
+]

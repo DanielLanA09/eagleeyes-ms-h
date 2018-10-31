@@ -1,0 +1,152 @@
+[
+    {
+        "id": 3,
+        "name": "综合",
+        "sort": 0,
+        "type": "PREFACE",
+        "des": "",
+        "footerDes": null,
+        "icon1": "",
+        "icon2": ""
+    },
+    {
+        "id": 4,
+        "name": "楼房布局",
+        "sort": 1,
+        "type": "INNERSET",
+        "des": "包含楼房朝向、分布情况、楼间距等信息，可以让您了解小区的采光通风情况以及居住空间是否舒适等问题。",
+        "footerDes": "快去看看小区里面的环境吧~\n左滑进入“小区绿化”\n",
+        "icon1": "icon-xiaotubiao_fuzhi-",
+        "icon2": "icon-loufangbuju"
+    },
+    {
+        "id": 5,
+        "name": "周边环境",
+        "sort": 4,
+        "type": "OUTERSET",
+        "des": "此模块分析了小区沿街人行道情况及周边景观、小区住户逛公园是否方便等维度。让您对小区周边环境是否优美，是否适合散步游玩有一个清晰的认知。",
+        "footerDes": "日常出行便捷与否由此决定，很重要的啦~\n左滑进入“交通”",
+        "icon1": "icon-xiaotubiao_fuzhi-12",
+        "icon2": "icon-xiaoqupeitao"
+    },
+    {
+        "id": 7,
+        "name": "小区绿化",
+        "sort": 2,
+        "type": "INNERSET",
+        "des": "此模块描写了小区的绿化规划情况及道路、楼道保洁情况，让您直观地了解小区内部的环境。",
+        "footerDes": "小区里都有些什么配套，你不好奇吗？\n左滑进入“小区配套”",
+        "icon1": "icon-xiaotubiao_fuzhi-6",
+        "icon2": "icon-xiaoqulvhua"
+    },
+    {
+        "id": 8,
+        "name": "交通",
+        "sort": 5,
+        "type": "OUTERSET",
+        "des": "本模块根据分析小区附近的公交站点、拥堵路段等维度让您对小区乘坐公共交通是否便利、驾车出行是否会拥堵有一个了解。",
+        "footerDes": "若您是驾车一族，车位配套很关键哦~\n左滑进入“车位配套”",
+        "icon1": "icon-xiaotubiao_fuzhi-9",
+        "icon2": "icon-datubiao-cloud-6"
+    },
+    {
+        "id": 9,
+        "name": "车位配套",
+        "sort": 6,
+        "type": "INNERSET",
+        "des": "本模块我们将对于小区车位数量是否充足、是否为人车分流、有无非机动车停车处等情况进行说明，便于您了解小区的车位情况。",
+        "footerDes": "柴米油盐酱醋茶，这就是生活的气息~\n左滑进入“菜场”",
+        "icon1": "icon-xiaotubiao_fuzhi-4",
+        "icon2": "icon-datubiao-cloud-1"
+    },
+    {
+        "id": 10,
+        "name": "菜场",
+        "sort": 7,
+        "type": "OUTERSET",
+        "des": "我们将对小区周围的果蔬门店、农贸市场、生鲜超市、大型超市等买菜点进行盘点，让您对周边买菜便利程度有一个清晰的认知。",
+        "footerDes": "看看是不是传说中的“学区房”\n左滑进入“学校”",
+        "icon1": "icon-xiaotubiao_fuzhi-7",
+        "icon2": "icon-datubiao-cloud-11"
+    },
+    {
+        "id": 11,
+        "name": "学校",
+        "sort": 8,
+        "type": "OUTERSET",
+        "des": "本模块内容包含对小区附近的幼儿园、小学、初中、高中、培训机构情况的描写，让您一眼就能看出小区教育配套是否优越。",
+        "footerDes": "吃、购、玩、行、生活服务，全都在这里！\n左滑进入“生活娱乐”",
+        "icon1": "icon-xiaotubiao_fuzhi-5",
+        "icon2": "icon-datubiao-cloud-3"
+    },
+    {
+        "id": 12,
+        "name": "生活娱乐",
+        "sort": 9,
+        "type": "OUTERSET",
+        "des": "此模块将对小区周边吃、购、玩、行、生活服务配套情况进行分析说明，向您展现居住在此日常购物、娱乐、出行是否便捷。",
+        "footerDes": "爱文艺、享运动的你，一定要看！\n左滑进入“文化体育”",
+        "icon1": "icon-xiaotubiao_fuzhi-8",
+        "icon2": "icon-shenghuoyule"
+    },
+    {
+        "id": 13,
+        "name": "小区配套",
+        "sort": 3,
+        "type": "INNERSET",
+        "des": "通过盘点小区的座椅、健身器材等配套设施，分析监控分布、门岗管理严格与否等情况，展示小区配套的齐全程度。",
+        "footerDes": "平时散步、晨练方不方便就看它了！\n左滑进入“周边环境”",
+        "icon1": "icon-xiaotubiao_fuzhi-14",
+        "icon2": "icon-xiaoqupeitao"
+    },
+    {
+        "id": 14,
+        "name": "文化体育",
+        "sort": 10,
+        "type": "OUTERSET",
+        "des": "我们将会说明小区周边图书馆、博物馆等文化场馆以及体育运动场所的具体情况，让您全面的了解小区周边的文化体育配套。",
+        "footerDes": "就诊买药是否方便可是个大问题~\n左滑进入“医疗”",
+        "icon1": "icon-xiaotubiao_fuzhi-13",
+        "icon2": "icon-datubiao-cloud-12"
+    },
+    {
+        "id": 16,
+        "name": "医疗",
+        "sort": 11,
+        "type": "OUTERSET",
+        "des": "此模块将对小区周边是否有大型医院，药店诊所的分布情况进行说明，让您对周边医疗配套的优劣有一个判断。",
+        "footerDes": "小区的污染情况决定了我们的身心健康，必须重视！\n左滑进入“污染”",
+        "icon1": "icon-xiaotubiao_fuzhi-11",
+        "icon2": "icon-yiliao1"
+    },
+    {
+        "id": 17,
+        "name": "污染",
+        "sort": 12,
+        "type": "INNERSET",
+        "des": "本模块将对小区周边的污染情况进行说明，分析小区住户是否会受噪音、废气、强光等污染元素的影响。",
+        "footerDes": "距离商务区域的远近，关乎每日的通勤时间，不是小问题~\n左滑进入“商务办公”",
+        "icon1": "icon-xiaotubiao_fuzhi-29",
+        "icon2": "icon-datubiao-cloud-9"
+    },
+    {
+        "id": 18,
+        "name": "商务办公",
+        "sort": 13,
+        "type": "OUTERSET",
+        "des": "此模块针对小区周边办公写字楼、银行营业厅、酒店等情况，能够为您展示出该小区找工作、商务办公的便捷程度。",
+        "footerDes": "看看小区平时办证、盖章、打证明是否方便\n左滑进入“政府机构”",
+        "icon1": "icon-xiaotubiao_fuzhi-10",
+        "icon2": "icon-datubiao-cloud-10"
+    },
+    {
+        "id": 19,
+        "name": "政府机构",
+        "sort": 14,
+        "type": "OUTERSET",
+        "des": "此模块针对小区周边办公写字楼、银行营业厅、酒店等情况，能够为您展示出该小区找工作、商务办公的便捷程度。",
+        "footerDes": "测评共14个模块，快去看看有没有漏掉的吧~",
+        "icon1": "icon-xiaotubiao_fuzhi-18",
+        "icon2": "icon-datubiao-cloud-8"
+    }
+]

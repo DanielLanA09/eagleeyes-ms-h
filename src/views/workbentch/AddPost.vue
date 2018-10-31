@@ -160,7 +160,7 @@
                                 <el-form-item label="内容">
                                     <el-row>
                                         <el-col :span="24" v-if="_module.branch=='TITLE_CONTENT'">
-                                            <el-input size="small" type="textarea" v-model="_module.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
+                                            <el-input size="small" type="textarea" autosize v-model="_module.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
                                             <!-- <vue-editor v-model="_module.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></vue-editor> -->
                                         </el-col>
                                         <el-col :span="24" v-if="_module.branch=='TITLE_IMGS_CONTENT'">
@@ -170,7 +170,7 @@
                                                   <el-input size="small" placeholder="输入图片的名字，使用“|”分割" v-model="list_item.imgNames" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
                                               </div>
                                               <div class="margin-up-down-10">
-                                                  <el-input size="small" type="textarea" v-model="list_item.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
+                                                  <el-input size="small" type="textarea" autosize v-model="list_item.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
                                                   <!-- <vue-editor v-model="list_item.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></vue-editor> -->
                                               </div>
                                               <div class="h-right margin-bottom-10">
@@ -222,19 +222,7 @@ export default {
   },
   data: () => ({
     BASE_URL: "",
-    CoverForm: {
-      tags: [],
-      devisions: [
-        {
-          paramsList: [],
-          moduleList: [
-            {
-              content: []
-            }
-          ]
-        }
-      ]
-    },
+    CoverForm: {},
     Tags: [],
     CoverStarted: false,
     activeDevisionName: "",
@@ -319,6 +307,9 @@ export default {
     // },
     onTagAdd() {
       for (let tag of this.temTag.name) {
+        if(!this.CoverForm.tags){
+          this.CoverForm.tags = [];
+        }
         this.CoverForm.tags.push({
           type: this.temTag.type,
           name: tag
@@ -496,7 +487,13 @@ export default {
       let module = this.CoverForm.devisions[devisionIndex].moduleList[
         moduleIndex
       ];
-      module.jsonContent = JSON.stringify(module.content);
+      let dev = this.CoverForm.devisions[devisionIndex];
+      if(dev.type=='PREFACE'){
+          let temContent = module.content.split('|');
+          module.jsonContent = JSON.stringify(temContent);
+      }else{
+        module.jsonContent = JSON.stringify(module.content);
+      }
       let devision = this.CoverForm.devisions[devisionIndex];
       api.saveModule(module, devision.id, res => {
         if (!res.success) {
@@ -528,7 +525,8 @@ export default {
     saveCoverOnLoseFocus() {
       this.getBuildingPrice(this.CoverForm.project);
       if (this.CoverForm.id) {
-        api.saveCover(this.CoverForm, res => {
+        let request = { cover: this.CoverForm, tags: this.CoverForm.tags };
+        api.saveCover(request,false, res => {
           if (res.success) {
             this.$notify.success({
               title: "提示",

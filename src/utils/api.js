@@ -1,9 +1,9 @@
 import axios from "axios"
 import router from '@/router'
 
-// const API_BASE_URL = 'http://192.168.31.252:30080/ealgeeyes-ms-3.0/api'
+const API_BASE_URL = 'http://192.168.31.252:30080/ealgeeyes-ms-3.0/api'
 // const API_BASE_URL = 'https://www.eagleshing.com/ealgeeyes-ms-3.0/api'
-const API_BASE_URL = 'http://localhost:8090/api'
+// const API_BASE_URL = 'http://localhost:8090/api'
 
 axios.interceptors.request.use(
     config => {
@@ -96,6 +96,13 @@ export default {
     },
     saveCover(Cover, prepare, callBack) {
         axios.post(API_BASE_URL + "/post/savecover/" + prepare, Cover).then(response => {
+            returnSuccess(response, callBack);
+        }).catch(error => {
+            returnError(error, callBack);
+        })
+    },
+    getAllParamSet(callBack){
+        axios.get(API_BASE_URL+"/postmanage/getallparamset").then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
@@ -221,14 +228,18 @@ export default {
         })
     },
     getAllOldCovers(callBack) {
-        axios.get(API_BASE_URL + "/scrapy/getoldcover").then(response => {
+        axios.get(API_BASE_URL + "/post/getoldcover").then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
-    getOldParams() {
-        axios.get(API_BASE_URL + "/scrapy/fetchcoverforparams")
+    getOldParams(request,callBack) {
+        axios.get(API_BASE_URL + "/post/fetchcoverforparams",request).then(response => {
+            returnSuccess(response, callBack)
+        }).catch(error => {
+            returnError(error, callBack);
+        })
     },
     saveAllCover(cover, callBack) {
         axios.post(API_BASE_URL + "/post/saveall", cover).then(response => {
