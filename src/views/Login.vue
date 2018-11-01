@@ -47,6 +47,7 @@ export default {
     onSubmit() {
       this.$refs["loginForm"].validate(valid => {
         if (valid) {
+          localStorage.clear();
           api
             .signin(this.loginModel, res => {
               if (res.success) {

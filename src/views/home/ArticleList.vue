@@ -13,10 +13,10 @@
                         <el-button slot="append"  icon="el-icon-search" @click="requestList"></el-button>
                     </el-input>
                 </el-col>
-                <!-- <el-button @click="getAllOldList">oldList</el-button>
-                <el-button @click="getParams">retriveParams</el-button>
+                <el-button @click="getAllOldList">oldList</el-button>
+                <!-- <el-button @click="getParams">retriveParams</el-button> -->
                 <el-button @click="parse">parse</el-button>
-                <el-button @click="save">save</el-button> -->
+                <el-button @click="save">save</el-button>
             </el-row>
         </div>
         <div class="table-box">
@@ -56,8 +56,10 @@
 
 <script>
 import api from "@/utils/api";
-import oldCover from "@/utils/oldData.json";
-import oldParam from "@/utils/oldParam.json";
+// import oldCover from "@/utils/oldData.json";
+// import oldParam from "@/utils/oldParam.json";
+
+import old from "@/utils/newOld.json";
 import devSet from "@/utils/devSet.json";
 import paramSet from "@/utils/paramSet.json";
 
@@ -88,6 +90,13 @@ export default {
       });
     },
     parse() {
+      this.oldList = this.oldList.filter(i => {
+        if (i.title.includes("新世界")) {
+          return i;
+        }
+      });
+      console.log(this.oldList);
+
       this.newList = [];
       for (const oldCover of this.oldList) {
         let newCover = {
@@ -119,8 +128,12 @@ export default {
               tab.title = "楼房布局";
               break;
             }
-            case "绿化保洁":{
+            case "绿化保洁": {
               tab.title = "小区绿化";
+              break;
+            }
+            case "内部配套":{
+              tab.title = "小区配套";
               break;
             }
           }
@@ -229,8 +242,7 @@ export default {
       // api.getAllParamSet(res=>{
       //   this.paramSet = res.data;
       // })
-      this.oldList = oldCover;
-      this.oldParamList = oldParam;
+      this.oldList = old;
       this.paramSet = paramSet;
       this.devSet = devSet;
     },

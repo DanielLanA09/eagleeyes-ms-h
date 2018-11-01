@@ -296,6 +296,7 @@ export default {
     onBackCover() {
       this.CoverStarted = false;
     },
+    
     // moduleChange(tab) {
     //   // eslint-disable-next-line
     //   let index = tab.index;
@@ -305,6 +306,7 @@ export default {
     //     }
     //   })
     // },
+
     onTagAdd() {
       for (let tag of this.temTag.name) {
         if(!this.CoverForm.tags){
@@ -576,7 +578,7 @@ export default {
   },
   mounted() {
     this.reset();
-    if (this.$store.state.COVER!= null) {
+    if (this.$store.state.COVER.id != null) {
       this.CoverForm = this.$store.state.COVER;
       this.activeDevisionName = this.CoverForm.devisions[0].name;
     }

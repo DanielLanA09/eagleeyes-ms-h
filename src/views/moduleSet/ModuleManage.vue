@@ -134,6 +134,7 @@ export default {
       "icon-xiaoqupeitao",
       "icon-loufangbuju",
       "icon-shenghuoyule",
+      "icon-zhoubianhuanjing1",
       "icon-xiaoqulvhua",
       "icon-datubiao-cloud-12",
       "icon-datubiao-cloud-11",
