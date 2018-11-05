@@ -18,7 +18,7 @@
                     <el-button type="primary" style="width:200px" @click="onSubmit">点击登陆</el-button>
                 </el-form-item>
                 <el-form-item>
-                    <span><a href="#" @click="$router.replace({name:'signup'})">用户注册</a></span>
+                    <!-- <span><a href="#" @click="$router.replace({name:'signup'})">用户注册</a></span> -->
                 </el-form-item>
             </el-form>
         </div>

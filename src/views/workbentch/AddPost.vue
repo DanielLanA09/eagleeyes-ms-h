@@ -128,7 +128,7 @@
                                 </el-form-item>
                             </el-row>
                             <el-row v-for="(_module,moduleKey) in devision.moduleList" :key="moduleKey" class="sub-devision">
-                                <div class="margin-up-down-20"><el-alert title="子栏目" type="success" :center="true" :closable="true" close-text="删除" @close="deleteModule(devisionKey,moduleKey)"></el-alert></div>
+                                <div class="margin-up-down-20"><el-alert :title="_module.name" type="success" :center="true" :closable="true" close-text="删除" @close="deleteModule(devisionKey,moduleKey)"></el-alert></div>
                                 <el-form-item label="标题">
                                     <el-col :span="24">
                                         <el-input size="small" v-model="_module.name" placeholder="请输入子栏目的标题" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
@@ -160,21 +160,22 @@
                                 <el-form-item label="内容">
                                     <el-row>
                                         <el-col :span="24" v-if="_module.branch=='TITLE_CONTENT'">
-                                            <el-input size="small" type="textarea" autosize v-model="_module.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
+                                            <el-input size="small" class="textarea" type="textarea" :autosize="{minRows:6}" v-model="_module.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
                                             <!-- <vue-editor v-model="_module.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></vue-editor> -->
                                         </el-col>
                                         <el-col :span="24" v-if="_module.branch=='TITLE_IMGS_CONTENT'">
                                             <div v-for="(list_item,list_key) in _module.content" :key="list_key">
+                                              <div class="margin-up-down-10">
+                                                  <el-input size="normal" class="textarea" type="textarea" :autosize="{minRows:6}" v-model="list_item.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
+                                                  <!-- <vue-editor v-model="list_item.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></vue-editor> -->
+                                              </div>
+
                                               <e-uploader v-model="list_item.img" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></e-uploader>
                                               <div class="margin-up-down-10">
                                                   <el-input size="small" placeholder="输入图片的名字，使用“|”分割" v-model="list_item.imgNames" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
                                               </div>
                                               <div class="margin-up-down-10">
-                                                  <el-input size="small" type="textarea" autosize v-model="list_item.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
-                                                  <!-- <vue-editor v-model="list_item.content" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></vue-editor> -->
-                                              </div>
-                                              <div class="h-right margin-bottom-10">
-                                                <el-button size="small" type="warning" v-if="_module.content.length>1" @click="onImgContentListRemove(devisionKey,moduleKey,list_key)">删除此节</el-button>
+                                                <el-button class="width-full" size="small" type="warning" v-if="_module.content.length>1" @click="onImgContentListRemove(devisionKey,moduleKey,list_key)">删除此节</el-button>
                                               </div>
                                             </div>
                                             <div class="h-right">
@@ -275,8 +276,8 @@ export default {
     }
   },
   methods: {
-    resetDevParams(dev,paramId) {
-      api.getPreDevParamsByName(dev.name,paramId,dev.id, res => {
+    resetDevParams(dev, paramId) {
+      api.getPreDevParamsByName(dev.name, paramId, dev.id, res => {
         if (res.success) {
           res.data.map(i => {
             delete i.id;
@@ -296,20 +297,9 @@ export default {
     onBackCover() {
       this.CoverStarted = false;
     },
-    
-    // moduleChange(tab) {
-    //   // eslint-disable-next-line
-    //   let index = tab.index;
-    //   api.getDevision(this.CoverForm.id,this.CoverForm.devisions[index].name,devRes=>{
-    //     if(devRes.success){
-    //       this.CoverForm.devisions[index] = devRes.data;
-    //     }
-    //   })
-    // },
-
     onTagAdd() {
       for (let tag of this.temTag.name) {
-        if(!this.CoverForm.tags){
+        if (!this.CoverForm.tags) {
           this.CoverForm.tags = [];
         }
         this.CoverForm.tags.push({
@@ -490,17 +480,17 @@ export default {
         moduleIndex
       ];
       let dev = this.CoverForm.devisions[devisionIndex];
-      if(dev.type=='PREFACE'){
-          let temContent = module.content.split('|');
-          module.jsonContent = JSON.stringify(temContent);
-      }else{
+      if (dev.type == "PREFACE") {
+        let temContent = module.content.split("|");
+        module.jsonContent = JSON.stringify(temContent);
+      } else {
         module.jsonContent = JSON.stringify(module.content);
       }
       let devision = this.CoverForm.devisions[devisionIndex];
       api.saveModule(module, devision.id, res => {
         if (!res.success) {
           this.$message.error(module.name + "：自动保存失败！因为" + res.msg);
-        }else{
+        } else {
           this.$notify.success({
             title: "提示",
             message: module.name + ":自动保存完毕！"
@@ -525,20 +515,22 @@ export default {
       );
     },
     saveCoverOnLoseFocus() {
-      this.getBuildingPrice(this.CoverForm.project);
-      if (this.CoverForm.id) {
-        let request = { cover: this.CoverForm, tags: this.CoverForm.tags };
-        api.saveCover(request,false, res => {
-          if (res.success) {
-            this.$notify.success({
-              title: "提示",
-              message: "保存完毕！"
-            });
-          } else {
-            this.$message.error(res.msg);
-          }
-        });
-      }
+      setTimeout(() => {
+        this.getBuildingPrice(this.CoverForm.project);
+        if (this.CoverForm.id) {
+          let request = { cover: this.CoverForm, tags: this.CoverForm.tags };
+          api.saveCover(request, false, res => {
+            if (res.success) {
+              this.$notify.success({
+                title: "提示",
+                message: "保存完毕！"
+              });
+            } else {
+              this.$message.error(res.msg);
+            }
+          });
+        }
+      }, 500);
     },
     setBuildingId(id) {
       let price = this.priceAvail.find(item => item.buildingBaseId == id);
@@ -596,5 +588,7 @@ export default {
   .title {
     font-size: 14px;
   }
+}
+.textarea {
 }
 </style>

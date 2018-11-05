@@ -9,6 +9,7 @@ import ModuleManage from "./views/moduleSet/ModuleManage.vue"
 import ModuleParams from "./views/moduleSet/ModuleParams.vue"
 import TagManage from "./views/moduleSet/TagManage.vue"
 import FilterQuestionSet from "./views/miniProgram/FilterQuestionsSet.vue"
+import WxArticle from "./views/miniProgram/ArticleLinkSet.vue"
 
 Vue.use(Router)
 
@@ -60,6 +61,10 @@ export default new Router({
         {
           path:"questionset",
           component:FilterQuestionSet
+        },
+        {
+          path:"wxarticle",
+          component:WxArticle
         }
       ]
     },

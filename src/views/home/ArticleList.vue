@@ -13,14 +13,15 @@
                         <el-button slot="append"  icon="el-icon-search" @click="requestList"></el-button>
                     </el-input>
                 </el-col>
-                <el-button @click="getAllOldList">oldList</el-button>
+                <!-- <el-button @click="getAllOldList">oldList</el-button> -->
                 <!-- <el-button @click="getParams">retriveParams</el-button> -->
-                <el-button @click="parse">parse</el-button>
-                <el-button @click="save">save</el-button>
+                <!-- <el-button @click="parse">parse</el-button> -->
+                <!-- <el-button @click="save">save</el-button> -->
+                <el-button @click="updatePrice">更新价格</el-button>
             </el-row>
         </div>
         <div class="table-box">
-            <el-table :data="articleList.content" border stripe :default-sort="{prop:'updatedAt',order:'ascending'}">
+            <el-table :data="articleList.content" border stripe :default-sort="{prop:'updatedAt',order:'ascending'}" v-loading="loading">
                 <el-table-column label="序号" width="60" prop="id"></el-table-column>
                 <el-table-column label="标题" width="120" prop="title"></el-table-column>
                 <el-table-column label="区域" width="80" prop="district"></el-table-column>
@@ -77,7 +78,8 @@ export default {
     newList: [],
     devSet: [],
     paramSet: [],
-    cIndex: 0
+    cIndex: 0,
+    loading: false
   }),
   methods: {
     save() {
@@ -89,14 +91,35 @@ export default {
         }
       });
     },
+    updatePrice() {
+      this.$confirm("此操作将花费2分钟进行数据更新，是否继续？", "警告", {
+        confirmButtonText: "继续",
+        cancelButtonText: "取消",
+        type: "warning"
+      }).then(() => {
+        this.loading = true;
+        api.updatePrice(res => {
+          if (res.success) {
+            this.$notify.success({
+              title: "提示",
+              message: "数据更新完毕"
+            });
+          } else {
+            this.$notify.error({
+              title: "服务器错误",
+              message: res.msg
+            });
+          }
+          this.loading = false;
+        });
+      });
+    },
     parse() {
       this.oldList = this.oldList.filter(i => {
         if (i.title.includes("新世界")) {
           return i;
         }
       });
-      console.log(this.oldList);
-
       this.newList = [];
       for (const oldCover of this.oldList) {
         let newCover = {
@@ -132,7 +155,7 @@ export default {
               tab.title = "小区绿化";
               break;
             }
-            case "内部配套":{
+            case "内部配套": {
               tab.title = "小区配套";
               break;
             }
@@ -322,13 +345,16 @@ export default {
       });
     },
     editCover(cover) {
+      this.loading = true;
       api.getCover(cover.id, res => {
         if (res.success) {
+          this.loading = false;
           this.$store.commit("EDIT_COVER", res.data);
           this.$router.replace({ path: "/home/addpost" });
           this.$store.commit("SET_CURRENT_NAV", "1-1");
         } else {
           this.$message.error(res.msg);
+          this.loading = false;
         }
       });
     }

@@ -30,9 +30,7 @@
             <i class="el-icon-star-off"></i>
             <span>小程序</span>
           </template>
-          <el-menu-item index="3-1">主页推荐语</el-menu-item>
-          <el-menu-item index="3-2">免责声明</el-menu-item>
-          <el-menu-item index="3-3">详情推荐语</el-menu-item>
+          <el-menu-item index="3-1">首页文章</el-menu-item>
           <el-menu-item index="3-4">筛选问题设置</el-menu-item>
         </el-submenu>
         <el-submenu index="4">
@@ -114,6 +112,10 @@ export default {
         }
         case "2-5": {
           this.nestedMapping("/home/tagmanage");
+          break;
+        }
+        case "3-1":{
+          this.nestedMapping("/home/wxarticle");
           break;
         }
         case "3-4":{

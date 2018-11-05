@@ -30,6 +30,10 @@ axios.interceptors.response.use(
             switch (error.response.status) {
                 case 401: {
                     router.replace({ name: "login" });
+                    break;
+                }
+                case 404:{
+                    return "未找到此接口！";
                 }
             }
         }
@@ -283,5 +287,33 @@ export default {
             returnError(error, callBack);
         })
     },
+    updatePrice(callBack){
+        axios.get(API_BASE_URL+"/post/updateprice").then(res=>{
+            returnSuccess(res, callBack);
+        }).catch(error => {
+            returnError(error, callBack);
+        })
+    },
+    saveLink(data,callBack){
+        axios.post(API_BASE_URL+"/article/save",data).then(res=>{
+            returnSuccess(res,callBack);
+        }).catch(error=>{
+            returnError(error,callBack);
+        })
+    },
+    linkList(data,callBack){
+        axios.get(API_BASE_URL+"/article/list",data).then(res=>{
+            returnSuccess(res,callBack);
+        }).catch(error=>{
+            returnError(error,callBack);
+        })
+    },
+    deleteLink(id,callBack){
+        axios.delete(API_BASE_URL+"/article/delete/"+id).then(res=>{
+            returnSuccess(res,callBack);
+        }).catch(error=>{
+            returnError(error,callBack);
+        })
+    }
 }
 
