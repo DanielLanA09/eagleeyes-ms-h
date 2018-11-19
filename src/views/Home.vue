@@ -12,7 +12,7 @@
             <span>工作台</span>
           </template>
           <el-menu-item index="1-1">添加新文章</el-menu-item>
-          <el-menu-item index="1-2">文章审核</el-menu-item>
+          <!-- <el-menu-item index="1-2">文章审核</el-menu-item> -->
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
@@ -21,8 +21,8 @@
           </template>
           <el-menu-item index="2-1">栏目设置</el-menu-item>
           <el-menu-item index="2-2">模块参数</el-menu-item>
-          <el-menu-item index="2-3">添加名词</el-menu-item>
-          <el-menu-item index="2-4">添加公交</el-menu-item>
+          <!-- <el-menu-item index="2-3">添加名词</el-menu-item> -->
+          <!-- <el-menu-item index="2-4">添加公交</el-menu-item> -->
           <el-menu-item index="2-5">标签设置</el-menu-item>
         </el-submenu>
         <el-submenu index="3">
@@ -33,7 +33,7 @@
           <el-menu-item index="3-1">首页文章</el-menu-item>
           <el-menu-item index="3-4">筛选问题设置</el-menu-item>
         </el-submenu>
-        <el-submenu index="4">
+        <!-- <el-submenu index="4">
           <template slot="title">
             <i class="el-icon-service"></i>
             <span>权限管理</span>
@@ -41,7 +41,7 @@
           <el-menu-item index="4-1">模块权限</el-menu-item>
           <el-menu-item index="4-2">角色权限</el-menu-item>
           <el-menu-item index="4-3">用户管理</el-menu-item>
-        </el-submenu>
+        </el-submenu> -->
       </el-menu>
     </el-aside>
     <el-container>

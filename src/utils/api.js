@@ -2,8 +2,8 @@ import axios from "axios"
 import router from '@/router'
 
 // const API_BASE_URL = 'http://192.168.31.252:30080/ealgeeyes-ms-3.0/api'
-// const API_BASE_URL = 'https://www.eagleshing.com/ealgeeyes-ms-3.0/api'
-const API_BASE_URL = 'http://localhost:8090/api'
+const API_BASE_URL = 'https://www.eagleshing.com/ealgeeyes-ms-3.0/api'
+// const API_BASE_URL = 'http://localhost:8090/api'
 
 axios.interceptors.request.use(
     config => {
@@ -17,24 +17,30 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
     response => {
         switch (response.status) {
-            case 200: {
-                return response;
-            }
-            case 201: {
-                return response;
-            }
+            case 200:
+                {
+                    return response;
+                }
+            case 201:
+                {
+                    return response;
+                }
         }
     },
     error => {
         if (error.response) {
             switch (error.response.status) {
-                case 401: {
-                    router.replace({ name: "login" });
-                    break;
-                }
-                case 404:{
-                    return "未找到此接口！";
-                }
+                case 401:
+                    {
+                        router.replace({
+                            name: "login"
+                        });
+                        break;
+                    }
+                case 404:
+                    {
+                        return "未找到此接口！";
+                    }
             }
         }
         return Promise.reject(error)
@@ -42,33 +48,74 @@ axios.interceptors.response.use(
 );
 
 function returnSuccess(response, callBack) {
-    callBack({ success: true, data: response.data })
+    callBack({
+        success: true,
+        data: response.data
+    })
 }
 
 function returnError(error, callBack) {
     let msg = ""
     if (error.response != undefined) {
         msg = error.response.data
-    }
-    else if (error.message != undefined) {
+    } else if (error.message != undefined) {
         msg = error.message;
     }
-    callBack({ success: false, msg: msg });
+    callBack({
+        success: false,
+        msg: msg.message
+    });
+}
+
+function returnResult(result, callBack, that, success, successMsg) {
+    if (success) {
+        if (that.$notify) {
+            that.$notify.success({
+                title: "提示",
+                message: successMsg
+            })
+        }
+        callBack(result.data);
+    } else {
+        let msg = ""
+        if (result.response) {
+            msg = result.response.data.error;
+        } else if (result.message) {
+            msg = result.message
+        } else if (msg.length == 0) {
+            msg = "服务器错误，请查看日志"
+        }
+        if (that.$notify) {
+            that.$notify.error({
+                title: "警告",
+                message: msg
+            })
+        }
+        callBack(undefined);
+    }
 }
 
 export default {
     BASE_URL: API_BASE_URL,
     signup(signupRequest) {
         axios.post(API_BASE_URL + "/auth/signup", signupRequest).then(() => {
-            router.replace({ name: "login" });
+            router.replace({
+                name: "login"
+            });
         })
     },
     signin(signinRequest, callBack) {
         axios.post(API_BASE_URL + "/auth/signin", signinRequest).then(res => {
             localStorage.setItem("ACCESS_TOKEN", res.data.accessToken)
-            callBack({ success: true, data: res.data });
+            callBack({
+                success: true,
+                data: res.data
+            });
         }).catch(erro => {
-            callBack({ success: false, data: erro })
+            callBack({
+                success: false,
+                data: erro
+            })
         })
     },
     getUserInfo(usernameRequest) {
@@ -76,10 +123,13 @@ export default {
             localStorage.setItem("USER", JSON.stringify(response.data))
         })
     },
-    
+
     saveModuleSet(module, callBack) {
         axios.post(API_BASE_URL + "/postmanage/savedevisionset", module).then(response => {
-            callBack({ success: true, data: response.data.object })
+            callBack({
+                success: true,
+                data: response.data.object
+            })
         }).catch(error => {
             returnError(error, callBack);
         })
@@ -105,8 +155,8 @@ export default {
             returnError(error, callBack);
         })
     },
-    getAllParamSet(callBack){
-        axios.get(API_BASE_URL+"/postmanage/getallparamset").then(response => {
+    getAllParamSet(callBack) {
+        axios.get(API_BASE_URL + "/postmanage/getallparamset").then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
@@ -144,7 +194,10 @@ export default {
         axios.post(API_BASE_URL + "/post/savedevisions", request).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
-            callBack({ success: false, msg: error.response.data.response });
+            callBack({
+                success: false,
+                msg: error.response.data.response
+            });
         })
     },
     saveDevision(devision, coverId, callBack) {
@@ -162,7 +215,9 @@ export default {
         })
     },
     getArticleList(title, pageable, callBack) {
-        axios.get(API_BASE_URL + "/post/getall/" + title, { params: pageable }).then(response => {
+        axios.get(API_BASE_URL + "/post/getall/" + title, {
+            params: pageable
+        }).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
@@ -197,7 +252,9 @@ export default {
         })
     },
     getTagSetList(pageable, callBack) {
-        axios.get(API_BASE_URL + "/postmanage/gettagsets", { params: pageable }).then(response => {
+        axios.get(API_BASE_URL + "/postmanage/gettagsets", {
+            params: pageable
+        }).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
@@ -238,8 +295,8 @@ export default {
             returnError(error, callBack);
         })
     },
-    getOldParams(request,callBack) {
-        axios.get(API_BASE_URL + "/post/fetchcoverforparams",request).then(response => {
+    getOldParams(request, callBack) {
+        axios.get(API_BASE_URL + "/post/fetchcoverforparams", request).then(response => {
             returnSuccess(response, callBack)
         }).catch(error => {
             returnError(error, callBack);
@@ -287,33 +344,57 @@ export default {
             returnError(error, callBack);
         })
     },
-    updatePrice(callBack){
-        axios.get(API_BASE_URL+"/post/updateprice").then(res=>{
+    updatePrice(callBack) {
+        axios.get(API_BASE_URL + "/post/updateprice").then(res => {
             returnSuccess(res, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
-    saveLink(data,callBack){
-        axios.post(API_BASE_URL+"/article/save",data).then(res=>{
-            returnSuccess(res,callBack);
-        }).catch(error=>{
-            returnError(error,callBack);
+    saveBlock(data, that,callBack) {
+        axios.post(API_BASE_URL + "/link/saveblock", data).then(res => {
+            returnResult(res, callBack, that, true,"保存板块成功！")
+        }).catch(error => {
+            returnResult(error, callBack, that, false)
         })
     },
-    linkList(data,callBack){
-        axios.get(API_BASE_URL+"/article/list",data).then(res=>{
-            returnSuccess(res,callBack);
-        }).catch(error=>{
-            returnError(error,callBack);
+    blockList(callBack) {
+        axios.get(API_BASE_URL + "/link/findblocks").then(res => {
+            returnSuccess(res, callBack);
+        }).catch(error => {
+            returnError(error, callBack);
         })
     },
-    deleteLink(id,callBack){
-        axios.delete(API_BASE_URL+"/article/delete/"+id).then(res=>{
-            returnSuccess(res,callBack);
-        }).catch(error=>{
-            returnError(error,callBack);
+    deleteBlock(id, callBack) {
+        axios.delete(API_BASE_URL + "/link/deleteblock/" + id).then(res => {
+            returnSuccess(res, callBack);
+        }).catch(error => {
+            returnError(error, callBack);
         })
-    }
+    },
+    findLinkList(pid, that, callBack) {
+        axios.get(API_BASE_URL + "/link/findarticlelinks", {
+            params: {
+                blockId: pid
+            }
+        }).then(res => {
+            returnResult(res, callBack, that, true,"获取链接列表成功！")
+        }).catch(error => {
+            returnResult(error, callBack, that, false)
+        })
+    },
+    saveLink(data, that, callBack) {
+        axios.post(API_BASE_URL + "/link/savelink", data).then(res => {
+            returnResult(res, callBack, that, true,"保存连接成功！")
+        }).catch(error => {
+            returnResult(error, callBack, that, false)
+        })
+    },
+    deleteLink(id, that, callBack) {
+        axios.delete(API_BASE_URL + "/link/deletelink/" + id).then(res => {
+            returnResult(res, callBack, that, true,"删除连接成功！")
+        }).catch(error => {
+            returnResult(error, callBack, that, false)
+        })
+    },
 }
-

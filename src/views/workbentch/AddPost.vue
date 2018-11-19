@@ -128,15 +128,15 @@
                                 </el-form-item>
                             </el-row>
                             <el-row v-for="(_module,moduleKey) in devision.moduleList" :key="moduleKey" class="sub-devision">
-                                <div class="margin-up-down-20"><el-alert :title="_module.name" type="success" :center="true" :closable="true" close-text="删除" @close="deleteModule(devisionKey,moduleKey)"></el-alert></div>
+                                <div class="margin-up-down-20"><el-alert title="子栏目" type="success" :center="true" :closable="true" close-text="删除" @close="deleteModule(devisionKey,moduleKey)"></el-alert></div>
                                 <el-form-item label="标题">
                                     <el-col :span="24">
                                         <el-input size="small" v-model="_module.name" placeholder="请输入子栏目的标题" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
                                     </el-col>
                                 </el-form-item>
-                                <el-form-item label="描述">
+                                <!-- <el-form-item label="描述">
                                     <el-input size="small" v-model="_module.des" placeholder="请输入子栏目描述" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
-                                </el-form-item>
+                                </el-form-item> -->
                                 <el-form-item label="属性">
                                     <el-col :span="3">
                                         <el-select size="small" placeholder="选择分支" v-model="_module.branch" @change="onBranchChange(devisionKey,moduleKey,$event)" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)">
@@ -146,11 +146,10 @@
                                             <!-- <el-option :label="'标签'" :value="'TITLE_KEY_VALUE'"></el-option> -->
                                         </el-select>
                                     </el-col>
-                                    <el-col :span="3" :offset="1">
+                                    <!-- <el-col :span="3" :offset="1">
                                         <el-input size="small" placeholder="输入排序" type="number" v-model="_module.sort" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
-                                    </el-col>
+                                    </el-col> -->
                                     <el-col :span="4" :offset="1">
-                                        <!-- <el-switch v-model="_module.status" active-text="启用" inactive-text="关闭"></el-switch> -->
                                         <el-select size="small" placeholder="选择状态" v-model="_module.status" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)">
                                             <el-option :label="'启用'" :value="0"></el-option>
                                             <el-option :label="'关闭'" :value="1"></el-option>
@@ -174,8 +173,8 @@
                                               <div class="margin-up-down-10">
                                                   <el-input size="small" placeholder="输入图片的名字，使用“|”分割" v-model="list_item.imgNames" @blur="saveModuleOnLoseFocus(devisionKey,moduleKey)"></el-input>
                                               </div>
-                                              <div class="margin-up-down-10">
-                                                <el-button class="width-full" size="small" type="warning" v-if="_module.content.length>1" @click="onImgContentListRemove(devisionKey,moduleKey,list_key)">删除此节</el-button>
+                                              <div class="margin-up-down-10 h-right">
+                                                <el-button class="h-right" size="small" type="warning" v-if="_module.content.length>1" @click="onImgContentListRemove(devisionKey,moduleKey,list_key)">删除此节</el-button>
                                               </div>
                                             </div>
                                             <div class="h-right">
@@ -199,7 +198,7 @@
                                     </el-row>
                                 </el-form-item>
                             </el-row>
-                            <el-form-item class="h-right">
+                            <el-form-item class="width-full">
                                 <el-button size="small" type="success" @click="onAddModule(devisionKey)">添加子栏目</el-button>
                                 <!-- <el-button type="warning" @click="onBackCover">返回封面</el-button> -->
                             </el-form-item>
