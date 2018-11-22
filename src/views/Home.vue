@@ -31,6 +31,7 @@
             <span>小程序</span>
           </template>
           <el-menu-item index="3-1">首页文章</el-menu-item>
+          <el-menu-item index="3-2">回答用户问题</el-menu-item>
           <el-menu-item index="3-4">筛选问题设置</el-menu-item>
         </el-submenu>
         <!-- <el-submenu index="4">
@@ -116,6 +117,10 @@ export default {
         }
         case "3-1":{
           this.nestedMapping("/home/wxarticle");
+          break;
+        }
+        case "3-2":{
+          this.nestedMapping("/home/answerquestion");
           break;
         }
         case "3-4":{

@@ -85,13 +85,13 @@ function returnResult(result, callBack, that, success, successMsg) {
         } else if (msg.length == 0) {
             msg = "服务器错误，请查看日志"
         }
-        if (that.$notify) {
+        if (that) {
             that.$notify.error({
                 title: "警告",
                 message: msg
             })
         }
-        callBack(undefined);
+        callBack(result.data);
     }
 }
 
@@ -351,9 +351,9 @@ export default {
             returnError(error, callBack);
         })
     },
-    saveBlock(data, that,callBack) {
+    saveBlock(data, that, callBack) {
         axios.post(API_BASE_URL + "/link/saveblock", data).then(res => {
-            returnResult(res, callBack, that, true,"保存板块成功！")
+            returnResult(res, callBack, that, true, "保存板块成功！")
         }).catch(error => {
             returnResult(error, callBack, that, false)
         })
@@ -378,23 +378,72 @@ export default {
                 blockId: pid
             }
         }).then(res => {
-            returnResult(res, callBack, that, true,"获取链接列表成功！")
+            returnResult(res, callBack, that, true, "获取链接列表成功！")
         }).catch(error => {
             returnResult(error, callBack, that, false)
         })
     },
     saveLink(data, that, callBack) {
         axios.post(API_BASE_URL + "/link/savelink", data).then(res => {
-            returnResult(res, callBack, that, true,"保存连接成功！")
+            returnResult(res, callBack, that, true, "保存连接成功！")
         }).catch(error => {
             returnResult(error, callBack, that, false)
         })
     },
     deleteLink(id, that, callBack) {
         axios.delete(API_BASE_URL + "/link/deletelink/" + id).then(res => {
-            returnResult(res, callBack, that, true,"删除连接成功！")
+            returnResult(res, callBack, that, true, "删除连接成功！")
         }).catch(error => {
             returnResult(error, callBack, that, false)
         })
     },
+    userQuestions(pageable, that, callBack) {
+        axios.get(API_BASE_URL + "/users/userquestions", {
+            params: {
+                page: pageable.page,
+                size: pageable.size
+            },
+            callBack
+        }).then(res => {
+            returnResult(res, callBack, that, true, "获取问题列表完成")
+        })
+    },
+    userAnswer(id, that, callBack) {
+        axios.get(API_BASE_URL + "/users/questionansers", {
+            params: {
+                id: id
+            },
+            callBack
+        }).then(res => {
+            returnResult(res, callBack, that, true, "获取回复完成！")
+        })
+    },
+    miniUser(id, that, callBack) {
+        axios.get(API_BASE_URL + "/users/miniuser", {
+            params: {
+                id: id
+            },
+            callBack
+        }).then(res => {
+            returnResult(res, callBack, that, true, "获取小程序用户完成")
+        })
+    },
+    ///users/saveanswer
+    saveAnswer(answer, id, that, callBack) {
+        axios.post(API_BASE_URL + "/users/saveanswer/" + id, answer).then(res => {
+            returnResult(res, callBack, that, true, "回复完成！")
+        })
+    },
+    getUserInfoByUsername(user, callBack) {
+        axios.get(API_BASE_URL + "/users/" + user).then((res) => {
+            returnResult(res, callBack)
+        })
+    },
+    deleteUserQuestion(id, that,callback){
+        axios.delete(API_BASE_URL + "/users/deletequestion/"+id).then((res) => {
+            returnResult(res, callback,that,true,"删除完成！")
+        })
+    }
+
+    
 }
