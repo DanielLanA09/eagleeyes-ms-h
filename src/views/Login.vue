@@ -1,8 +1,7 @@
 <template>
     <div class="login-back h-v-center">
         <div class="title h-v-center">
-            <div></div>
-            EAGLEEYE SOFTWARE MANAGEMENT SYSTEM
+            软胜鹰眼分析系统软件V1.0
         </div>
         <div class="login-block">
             <el-form ref="loginForm" :model="loginModel" label-width="70px" :label-position="'left'" :rules="rules">

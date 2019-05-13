@@ -1,13 +1,16 @@
 import axios from "axios"
 import router from '@/router'
-
+import store from "@/store";
 // const API_BASE_URL = 'http://192.168.31.252:30080/ealgeeyes-ms-3.0/api'
-const API_BASE_URL = 'https://www.eagleshing.com/ealgeeyes-ms-3.0/api'
+// const API_BASE_URL = 'https://www.eagleshing.com/ealgeeyes-ms-3.0/api'
 // const API_BASE_URL = 'http://localhost:8090/api'
+
+axios.defaults.baseURL = process.env.VUE_APP_BASEURL
 
 axios.interceptors.request.use(
     config => {
-        config.headers.Authorization = "Bearer " + localStorage.getItem("ACCESS_TOKEN")
+        // config.headers.Authorization = "Bearer " + localStorage.getItem("ACCESS_TOKEN")
+        config.headers.Authorization = "Bearer " + store.state.ACCESS_TOKEN
         return config;
     },
     error => {
@@ -96,17 +99,18 @@ function returnResult(result, callBack, that, success, successMsg) {
 }
 
 export default {
-    BASE_URL: API_BASE_URL,
+    BASE_URL: process.env.VUE_APP_BASEURL,
     signup(signupRequest) {
-        axios.post(API_BASE_URL + "/auth/signup", signupRequest).then(() => {
+        axios.post("/auth/signup", signupRequest).then(() => {
             router.replace({
                 name: "login"
             });
         })
     },
     signin(signinRequest, callBack) {
-        axios.post(API_BASE_URL + "/auth/signin", signinRequest).then(res => {
+        axios.post("/auth/signin", signinRequest).then(res => {
             localStorage.setItem("ACCESS_TOKEN", res.data.accessToken)
+            store.commit("SIGN_IN", res.data.accessToken);
             callBack({
                 success: true,
                 data: res.data
@@ -119,13 +123,14 @@ export default {
         })
     },
     getUserInfo(usernameRequest) {
-        axios.get(API_BASE_URL + "/users/" + usernameRequest).then((response) => {
+        axios.get("/users/" + usernameRequest).then((response) => {
             localStorage.setItem("USER", JSON.stringify(response.data))
+            store.commit("SET_USER", response.data);
         })
     },
 
     saveModuleSet(module, callBack) {
-        axios.post(API_BASE_URL + "/postmanage/savedevisionset", module).then(response => {
+        axios.post("/postmanage/savedevisionset", module).then(response => {
             callBack({
                 success: true,
                 data: response.data.object
@@ -135,63 +140,63 @@ export default {
         })
     },
     getModuleSet(callBack) {
-        axios.get(API_BASE_URL + "/postmanage/getalldevisionset").then(response => {
+        axios.get("/postmanage/getalldevisionset").then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     deleteModuleSet(id, callBack) {
-        axios.delete(API_BASE_URL + "/postmanage/deletedevisionset/" + id).then(response => {
+        axios.delete("/postmanage/deletedevisionset/" + id).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     saveCover(Cover, prepare, callBack) {
-        axios.post(API_BASE_URL + "/post/savecover/" + prepare, Cover).then(response => {
+        axios.post("/post/savecover/" + prepare, Cover).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getAllParamSet(callBack) {
-        axios.get(API_BASE_URL + "/postmanage/getallparamset").then(response => {
+        axios.get("/postmanage/getallparamset").then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     saveParamSet(param, id, callBack) {
-        axios.post(API_BASE_URL + "/postmanage/savaparamset/" + id, param).then(response => {
+        axios.post("/postmanage/savaparamset/" + id, param).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     deleteParamSet(id, callBack) {
-        axios.delete(API_BASE_URL + "/postmanage/deleteparamset/" + id).then(response => {
+        axios.delete("/postmanage/deleteparamset/" + id).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getparamlist(id, callBack) {
-        axios.get(API_BASE_URL + "/postmanage/getparamlist/" + id).then(response => {
+        axios.get("/postmanage/getparamlist/" + id).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getParamListByName(name, callBack) {
-        axios.get(API_BASE_URL + "/postmanage/getparamlistbyname/" + name).then(response => {
+        axios.get("/postmanage/getparamlistbyname/" + name).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     saveDevisions(request, callBack) {
-        axios.post(API_BASE_URL + "/post/savedevisions", request).then(response => {
+        axios.post("/post/savedevisions", request).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             callBack({
@@ -201,21 +206,21 @@ export default {
         })
     },
     saveDevision(devision, coverId, callBack) {
-        axios.post(API_BASE_URL + "/post/savedevision/" + coverId, devision).then(response => {
+        axios.post("/post/savedevision/" + coverId, devision).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     saveModule(module, devisionId, callBack) {
-        axios.post(API_BASE_URL + "/post/savemodule/" + devisionId, module).then(response => {
+        axios.post("/post/savemodule/" + devisionId, module).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getArticleList(title, pageable, callBack) {
-        axios.get(API_BASE_URL + "/post/getall/" + title, {
+        axios.get("/post/getall/" + title, {
             params: pageable
         }).then(response => {
             returnSuccess(response, callBack);
@@ -224,35 +229,35 @@ export default {
         })
     },
     deleteModule(id, callBack) {
-        axios.delete(API_BASE_URL + "/post/deletemodule/" + id).then(response => {
+        axios.delete("/post/deletemodule/" + id).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     saveParams(request, callBack) {
-        axios.post(API_BASE_URL + "/post/saveparams", request).then(response => {
+        axios.post("/post/saveparams", request).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     deleteCover(id, callBack) {
-        axios.delete(API_BASE_URL + "/post/deletecover/" + id).then(response => {
+        axios.delete("/post/deletecover/" + id).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getCover(id, callBack) {
-        axios.get(API_BASE_URL + "/post/getcover/" + id).then(response => {
+        axios.get("/post/getcover/" + id).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getTagSetList(pageable, callBack) {
-        axios.get(API_BASE_URL + "/postmanage/gettagsets", {
+        axios.get("/postmanage/gettagsets", {
             params: pageable
         }).then(response => {
             returnSuccess(response, callBack);
@@ -261,119 +266,119 @@ export default {
         })
     },
     saveTagSet(tagSet, callBack) {
-        axios.post(API_BASE_URL + "/postmanage/savetagset", tagSet).then(response => {
+        axios.post("/postmanage/savetagset", tagSet).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     deleteTagSet(id, callBack) {
-        axios.delete(API_BASE_URL + "/postmanage/deletetagset/" + id).then(response => {
+        axios.delete("/postmanage/deletetagset/" + id).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getTagByType(type, callBack) {
-        axios.get(API_BASE_URL + "/postmanage/gettagbytype/" + type).then(response => {
+        axios.get("/postmanage/gettagbytype/" + type).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getBuildingPrice(project, callBack) {
-        axios.get(API_BASE_URL + "/scrapy/findByProject/" + project).then(response => {
+        axios.get("/scrapy/findByProject/" + project).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getAllOldCovers(callBack) {
-        axios.get(API_BASE_URL + "/post/getoldcover").then(response => {
+        axios.get("/post/getoldcover").then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getOldParams(request, callBack) {
-        axios.get(API_BASE_URL + "/post/fetchcoverforparams", request).then(response => {
+        axios.get("/post/fetchcoverforparams", request).then(response => {
             returnSuccess(response, callBack)
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     saveAllCover(cover, callBack) {
-        axios.post(API_BASE_URL + "/post/saveall", cover).then(response => {
+        axios.post("/post/saveall", cover).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     saveQuestion(request, callBack) {
-        axios.post(API_BASE_URL + "/postmanage/addquestion", request).then(response => {
+        axios.post("/postmanage/addquestion", request).then(response => {
             returnSuccess(response, callBack)
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     deleteQuestion(id, callBack) {
-        axios.delete(API_BASE_URL + "/postmanage/deletequestion/" + id).then(response => {
+        axios.delete("/postmanage/deletequestion/" + id).then(response => {
             returnSuccess(response, callBack)
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getQuestions(callBack) {
-        axios.get(API_BASE_URL + "/postmanage/getquestions").then(response => {
+        axios.get("/postmanage/getquestions").then(response => {
             returnSuccess(response, callBack)
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     publish(data, callBack) {
-        axios.post(API_BASE_URL + "/post/publish", data).then(response => {
+        axios.post("/post/publish", data).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     getDevision(coverId, devName, callBack) {
-        axios.get(API_BASE_URL + "/post/getdevisionbyname/" + coverId + "/" + devName).then(response => {
+        axios.get("/post/getdevisionbyname/" + coverId + "/" + devName).then(response => {
             returnSuccess(response, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     updatePrice(callBack) {
-        axios.get(API_BASE_URL + "/post/updateprice").then(res => {
+        axios.get("/post/updateprice").then(res => {
             returnSuccess(res, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     saveBlock(data, that, callBack) {
-        axios.post(API_BASE_URL + "/link/saveblock", data).then(res => {
+        axios.post("/link/saveblock", data).then(res => {
             returnResult(res, callBack, that, true, "保存板块成功！")
         }).catch(error => {
             returnResult(error, callBack, that, false)
         })
     },
     blockList(callBack) {
-        axios.get(API_BASE_URL + "/link/findblocks").then(res => {
+        axios.get("/link/findblocks").then(res => {
             returnSuccess(res, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     deleteBlock(id, callBack) {
-        axios.delete(API_BASE_URL + "/link/deleteblock/" + id).then(res => {
+        axios.delete("/link/deleteblock/" + id).then(res => {
             returnSuccess(res, callBack);
         }).catch(error => {
             returnError(error, callBack);
         })
     },
     findLinkList(pid, that, callBack) {
-        axios.get(API_BASE_URL + "/link/findarticlelinks", {
+        axios.get("/link/findarticlelinks", {
             params: {
                 blockId: pid
             }
@@ -384,21 +389,21 @@ export default {
         })
     },
     saveLink(data, that, callBack) {
-        axios.post(API_BASE_URL + "/link/savelink", data).then(res => {
+        axios.post("/link/savelink", data).then(res => {
             returnResult(res, callBack, that, true, "保存连接成功！")
         }).catch(error => {
             returnResult(error, callBack, that, false)
         })
     },
     deleteLink(id, that, callBack) {
-        axios.delete(API_BASE_URL + "/link/deletelink/" + id).then(res => {
+        axios.delete("/link/deletelink/" + id).then(res => {
             returnResult(res, callBack, that, true, "删除连接成功！")
         }).catch(error => {
             returnResult(error, callBack, that, false)
         })
     },
     userQuestions(pageable, that, callBack) {
-        axios.get(API_BASE_URL + "/users/userquestions", {
+        axios.get("/users/userquestions", {
             params: {
                 page: pageable.page,
                 size: pageable.size
@@ -409,7 +414,7 @@ export default {
         })
     },
     userAnswer(id, that, callBack) {
-        axios.get(API_BASE_URL + "/users/questionansers", {
+        axios.get("/users/questionansers", {
             params: {
                 id: id
             },
@@ -419,7 +424,7 @@ export default {
         })
     },
     miniUser(id, that, callBack) {
-        axios.get(API_BASE_URL + "/users/miniuser", {
+        axios.get("/users/miniuser", {
             params: {
                 id: id
             },
@@ -430,20 +435,20 @@ export default {
     },
     ///users/saveanswer
     saveAnswer(answer, id, that, callBack) {
-        axios.post(API_BASE_URL + "/users/saveanswer/" + id, answer).then(res => {
+        axios.post("/users/saveanswer/" + id, answer).then(res => {
             returnResult(res, callBack, that, true, "回复完成！")
         })
     },
     getUserInfoByUsername(user, callBack) {
-        axios.get(API_BASE_URL + "/users/" + user).then((res) => {
+        axios.get("/users/" + user).then((res) => {
             returnResult(res, callBack)
         })
     },
-    deleteUserQuestion(id, that,callback){
-        axios.delete(API_BASE_URL + "/users/deletequestion/"+id).then((res) => {
-            returnResult(res, callback,that,true,"删除完成！")
+    deleteUserQuestion(id, that, callback) {
+        axios.delete("/users/deletequestion/" + id).then((res) => {
+            returnResult(res, callback, that, true, "删除完成！")
         })
     }
 
-    
+
 }
