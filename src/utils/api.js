@@ -9,8 +9,8 @@ axios.defaults.baseURL = process.env.VUE_APP_BASEURL
 
 axios.interceptors.request.use(
     config => {
-        // config.headers.Authorization = "Bearer " + localStorage.getItem("ACCESS_TOKEN")
-        config.headers.Authorization = "Bearer " + store.state.ACCESS_TOKEN
+        config.headers.Authorization = "Bearer " + localStorage.getItem("ACCESS_TOKEN")
+        // config.headers.Authorization = "Bearer " + store.state.ACCESS_TOKEN
         return config;
     },
     error => {
@@ -449,6 +449,4 @@ export default {
             returnResult(res, callback, that, true, "删除完成！")
         })
     }
-
-
 }

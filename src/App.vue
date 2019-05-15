@@ -2,10 +2,7 @@
   <div id="app">
     <div class="route-body">
       <router-view/>
-    </div>
-    <div class="app-footer h-v-center">
-      <span>EagleShing Software Entertainment Presentation</span>
-    </div>    
+    </div>  
   </div>
 </template>
 <script>
@@ -15,16 +12,21 @@ export default{
 }
 
 </script>
-<style lang="less" scoped>
+<style lang="less">
 @import "./assets/style/eagle-system.css";
 @import "./assets/style/iconfont.css";
-#app{
-  width: 100vw;
+body{
   height: 100vh;
+  width: 100vw;
+}
+#app{
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
 .route-body{
   width: 100%;
-  height: 98vh;
+  flex-grow: 2;
   display: flex;
   justify-content: center;
   align-items: center;

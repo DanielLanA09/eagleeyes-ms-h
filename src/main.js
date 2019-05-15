@@ -4,10 +4,12 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import helper from './helper.js'
 
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
+Vue.use(helper);
 
 new Vue({
   router,

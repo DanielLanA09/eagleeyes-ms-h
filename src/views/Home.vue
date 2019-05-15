@@ -13,6 +13,8 @@
           </template>
           <el-menu-item index="1-1">添加新文章</el-menu-item>
           <!-- <el-menu-item index="1-2">文章审核</el-menu-item> -->
+          <!-- <el-menu-item index="1-3">自定义文章</el-menu-item>       -->
+          <el-menu-item index="1-4">自定义列表</el-menu-item>      
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
@@ -103,6 +105,14 @@ export default {
           this.nestedMapping("/home/addpost");
           break;
         }
+        case "1-3": {
+          this.nestedMapping("/home/addtextpost");
+          break;
+        }
+        case "1-4": {
+          this.nestedMapping("/home/textpostlist");
+          break;
+        }
         case "2-1": {
           this.nestedMapping("/home/modulemanage");
           break;
@@ -135,7 +145,7 @@ export default {
     }
   },
   created() {
-    this.nestedMapping("/home/articles");
+    // this.nestedMapping("/home/articles");
   },
   mounted() {
     

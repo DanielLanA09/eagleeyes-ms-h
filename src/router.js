@@ -35,6 +35,11 @@ export default new Router({
       component: Signup
     },
     {
+      name: 'textpost',
+      path: '/textpost',
+      component: () => import('@/views/workbentch/CustomePost.vue')
+    },
+    {
       path: '/home',
       name: 'home',
       component: Home,
@@ -44,8 +49,19 @@ export default new Router({
           component: ActicleList
         },
         {
+          name: 'addpost',
           path: "addpost",
           component: AddPost
+        },
+        {
+          name: 'addtextpost',
+          path: "addtextpost",
+          component: () => import('@/views/workbentch/AddTextPost.vue')
+        },
+        {
+          name: 'textpostlist',
+          path: "textpostlist",
+          component: () => import('@/views/workbentch/CustomPostList.vue')
         },
         {
           path: "modulemanage",

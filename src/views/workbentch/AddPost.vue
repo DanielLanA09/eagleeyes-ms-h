@@ -115,6 +115,9 @@
               </el-option>
             </el-select>
           </el-form-item>
+          <el-form-item label="视频地址">
+            <el-input size="small" class="width-full" placeholder="请粘贴视频URL至此" v-model="CoverForm.videoSrc"></el-input>
+          </el-form-item>
           <el-form-item label="选择标签">
             <div class="inline" v-for="(tag,key) in CoverForm.tags" :key="key">
               <el-tag
